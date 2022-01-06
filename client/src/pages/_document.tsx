@@ -36,6 +36,7 @@ export default class MyDocument extends Document {
       <Html lang="en">
         <Head>
           <link rel="icon" href="/favicon.ico" />
+          <title>Tailoring</title>
         </Head>
 
         <body>
