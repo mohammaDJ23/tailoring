@@ -1,7 +1,7 @@
-import { Form, GlobalObj, Input, InputObj } from "../../types";
+import { Form, Input } from "../../types";
 
-export class Login {
-  [Form.LOGIN] = {
+export const login = {
+  [Form.LOGIN]: {
     [Input.EMAIL]: {
       value: "",
       errorText: ""
@@ -11,5 +11,5 @@ export class Login {
       value: "",
       errorText: ""
     }
-  };
-}
+  }
+};
