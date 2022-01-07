@@ -1,8 +1,6 @@
 import { NextPage } from "next";
-import AppContainer from "../../../@tailoring/shared/components/app-container";
+import Container from "./container";
 
-const Login: NextPage = () => {
-  return <AppContainer></AppContainer>;
-};
+const Login: NextPage = () => <Container />;
 
 export default Login;

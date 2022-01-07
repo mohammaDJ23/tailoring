@@ -25,5 +25,7 @@ export function setForms(forms: GlobalObj<GlobalObj<InputObj>>[]): SetForms {
 }
 
 export function formSubmit(form: string) {
-  return function (dispatch: Dispatch<AppActions>, getState: () => RootState) {};
+  return function (dispatch: Dispatch<AppActions>, getState: () => RootState) {
+    console.log(form, getState());
+  };
 }
