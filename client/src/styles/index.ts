@@ -199,24 +199,24 @@ const GlobalStyle: GlobalStyleComponent<{}, DefaultTheme> = createGlobalStyle`
   }
 
   *::-webkit-scrollbar {
-    width: 6px;
+    width: 4px;
   }
-
+  
   *::-webkit-scrollbar-track {
     background-color: inherit;
     border-radius: 6px;
   }
-
+  
   *::-webkit-scrollbar-thumb {
     background-color: rgba(0, 0, 0, 0.2);
     border-radius: 6px;
   }
-
+  
   *::-webkit-scrollbar:horizontal {
     background-color: rgba(0, 0, 0, 0.2);
     height: 4px;
   }
-
+  
   *::-webkit-scrollbar-thumb:horizontal {
     border-radius: 4px;
   }

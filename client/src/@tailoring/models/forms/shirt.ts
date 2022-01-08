@@ -1,7 +1,7 @@
 import { Form, Input } from "../../types";
 
-export class Shirt {
-  [Form.CREATE_NEW_SHIRT] = {
+export const shirt = {
+  [Form.CREATE_NEW_SHIRT]: {
     [Input.NAME]: {
       value: "",
       errorText: ""
@@ -41,5 +41,5 @@ export class Shirt {
       value: "",
       errorText: ""
     }
-  };
-}
+  }
+};
