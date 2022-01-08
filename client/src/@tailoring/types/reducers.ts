@@ -18,3 +18,9 @@ export interface FormObj<T extends unknown = unknown> {
   forms: GlobalObj<GlobalObj<InputObj>>;
   data: T;
 }
+
+/**@type { enabling element } */
+
+export interface EnablingElementObj {
+  elementName: string;
+}

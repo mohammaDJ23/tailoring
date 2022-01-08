@@ -42,3 +42,15 @@ export interface SetForms {
 }
 
 export type FormActions = ChangeInput | SetForms;
+
+/**@type { enabling element } */
+
+export interface EnablingElement {
+  type: Action.ENABLING_ELEMENT;
+
+  payload: {
+    elementName: string;
+  };
+}
+
+export type EnablingElementActions = EnablingElement;

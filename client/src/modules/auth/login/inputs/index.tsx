@@ -2,11 +2,12 @@ import { FormControl, Input as Inpt, InputLabel, FormHelperText } from "@materia
 import { Button } from "@mui/material";
 import { FC } from "react";
 import { Col, Row } from "reactstrap";
-import { useAction, useState } from "../../../../@tailoring/shared/hooks";
+import { useAction, useFocus, useState } from "../../../../@tailoring/shared/hooks";
 import { Form, Input } from "../../../../@tailoring/types";
 import * as C from "./styles";
 
 const Inputs: FC = () => {
+  const {} = useFocus();
   const { formsReducer } = useState();
   const { changeInput, formSubmit } = useAction();
   const signupForm = formsReducer.forms[Form.LOGIN];

@@ -59,5 +59,10 @@ export enum Action {
   SUCCESS,
   CHANGE_INPUT,
   FORM_SUBMIT,
-  SET_FOMRS
+  SET_FOMRS,
+  ENABLING_ELEMENT
+}
+
+export enum Element {
+  NAVIGATION = "NAVIGATION"
 }

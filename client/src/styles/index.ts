@@ -2,7 +2,7 @@ import { GlobalStyleComponent, DefaultTheme, createGlobalStyle } from "styled-co
 
 const GlobalStyle: GlobalStyleComponent<{}, DefaultTheme> = createGlobalStyle`
   :root {
-    --default-color: #0d47a1;
+    --default-color: #1976d2;
     --default-background: #eae9e9;
     --full-height: 100vh;
     --full-width: 100vw;
