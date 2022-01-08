@@ -1,49 +1,108 @@
-import { Action, Error, RequestProcessActions, RequestProcessObj } from "../../types";
+import { Action, ClientError, Loading, RequestProcessActions, RequestProcessObj, ServerError, Success } from "../../types";
 
 const initalState: RequestProcessObj = {
-  loading: false,
-  error: ""
+  loading: {},
+  errors: {
+    server: "",
+    client: ""
+  }
 };
 
-function loading<T extends RequestProcessObj>(state: T): T {
+function loading<T extends RequestProcessObj, K extends Loading>(state: T, action: K): T {
+  const { loadingProcess } = action.payload;
+
   return {
     ...state,
 
-    loading: true,
-    error: ""
+    loading: {
+      ...state.loading,
+
+      [loadingProcess]: true
+    },
+
+    errors: {
+      ...state.errors,
+
+      client: "",
+      server: ""
+    }
   };
 }
 
-function sucess<T extends RequestProcessObj>(state: T): T {
+function sucess<T extends RequestProcessObj, K extends Success>(state: T, action: K): T {
+  const { loadingProcess } = action.payload;
+
   return {
     ...state,
 
-    loading: false,
-    error: ""
+    loading: {
+      ...state.loading,
+
+      [loadingProcess]: false
+    },
+
+    errors: {
+      ...state.errors,
+
+      client: "",
+      server: ""
+    }
   };
 }
 
-function error<T extends RequestProcessObj, K extends Error>(state: T, action: K): T {
+function clientError<T extends RequestProcessObj, K extends ClientError>(state: T, action: K): T {
   const { error } = action.payload;
 
   return {
     ...state,
 
-    loading: false,
-    error
+    loading: (function () {
+      const loading = { ...state.loading };
+
+      for (const key in loading) {
+        loading[key] = false;
+      }
+
+      return loading;
+    })(),
+
+    errors: {
+      ...state.errors,
+
+      client: error
+    }
+  };
+}
+
+function serverError<T extends RequestProcessObj, K extends ServerError>(state: T, action: K): T {
+  const { error } = action.payload;
+
+  return {
+    ...state,
+
+    loading: {},
+
+    errors: {
+      ...state.errors,
+
+      server: error
+    }
   };
 }
 
 export function reducer(state: RequestProcessObj = initalState, action: RequestProcessActions) {
   switch (action.type) {
     case Action.LOADING:
-      return loading(state);
+      return loading(state, action);
 
     case Action.SUCCESS:
-      return sucess(state);
+      return sucess(state, action);
 
-    case Action.ERROR:
-      return error(state, action);
+    case Action.CLIENT_ERROR:
+      return clientError(state, action);
+
+    case Action.SERVER_ERROR:
+      return serverError(state, action);
 
     default:
       return state;

@@ -3,7 +3,7 @@ import { GlobalStyleComponent, DefaultTheme, createGlobalStyle } from "styled-co
 const GlobalStyle: GlobalStyleComponent<{}, DefaultTheme> = createGlobalStyle`
   :root {
     --default-color: #1976d2;
-    --default-background: #eae9e9;
+    --default-background: rgb(244, 247, 254);
     --full-height: 100vh;
     --full-width: 100vw;
     --f-black: 'black';
@@ -187,7 +187,7 @@ const GlobalStyle: GlobalStyleComponent<{}, DefaultTheme> = createGlobalStyle`
   }
 
   .box-shadow {
-    box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.15)
+    box-shadow: 0 0 20px 01px rgba(0, 0, 0, 0.1);
   }
 
   .mr-14 {

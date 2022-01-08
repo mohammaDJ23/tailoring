@@ -1,10 +1,10 @@
 import { TryObj } from "../../../types";
 
 class SyncTry {
-  try<T extends unknown, K extends unknown>(fn: (arg: T) => K): (arg: T) => TryObj<K> {
-    return function (arg) {
+  try<T extends any = any>(fn: (...args: any[]) => T): (...args: any[]) => TryObj<T> {
+    return function (args) {
       try {
-        const data = fn.call(arg, arg);
+        const data = fn(args);
 
         return {
           data

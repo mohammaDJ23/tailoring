@@ -19,8 +19,8 @@ const ani = keyframes`
 
 export const content = styled.div`
   &.container {
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
     position: absolute;
     top: 50%;
     left: 50%;

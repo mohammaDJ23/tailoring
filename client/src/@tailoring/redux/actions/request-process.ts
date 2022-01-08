@@ -1,20 +1,38 @@
-import { Action, Error, Loading, Success } from "../../types";
+import { Action, ClientError, Loading, ServerError, Success } from "../../types";
 
-export function loading(): Loading {
+export function loading(loadingProcess: string): Loading {
   return {
-    type: Action.LOADING
+    type: Action.LOADING,
+
+    payload: {
+      loadingProcess
+    }
   };
 }
 
-export function success(): Success {
+export function success(loadingProcess: string): Success {
   return {
-    type: Action.SUCCESS
+    type: Action.SUCCESS,
+
+    payload: {
+      loadingProcess
+    }
   };
 }
 
-export function error<T extends string>(error: T): Error<T> {
+export function clientError<T extends string>(error: T): ClientError<T> {
   return {
-    type: Action.ERROR,
+    type: Action.CLIENT_ERROR,
+
+    payload: {
+      error
+    }
+  };
+}
+
+export function serverError<T extends string>(error: T): ServerError<T> {
+  return {
+    type: Action.SERVER_ERROR,
 
     payload: {
       error

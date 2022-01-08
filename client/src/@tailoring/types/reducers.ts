@@ -3,8 +3,12 @@ import { GlobalObj } from ".";
 /**@type { request process } */
 
 export interface RequestProcessObj {
-  loading: boolean;
-  error: string;
+  loading: GlobalObj<boolean>;
+
+  errors: {
+    server?: string;
+    client?: string;
+  };
 }
 
 /**@type { form } */

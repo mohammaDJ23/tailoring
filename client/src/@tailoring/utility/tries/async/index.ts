@@ -1,10 +1,10 @@
 import { TryObj } from "../../../types";
 
 class AsyncTry {
-  try<T extends unknown, K extends unknown>(fn: (arg: T) => Promise<K>): (arg: T) => Promise<TryObj<K>> {
-    return async function (arg) {
+  try<T extends any = any>(fn: (...args: any[]) => Promise<T>): (...args: any[]) => Promise<TryObj<T>> {
+    return async function (...args) {
       try {
-        const data = await fn.call(arg, arg);
+        const data = await fn(...args);
 
         return {
           data

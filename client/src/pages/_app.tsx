@@ -4,13 +4,14 @@ import GlobalStyle from "../styles";
 import "../styles/fonts.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Spinner from "../@tailoring/shared/components/spinner";
-import { useError, useRedirectLoading, useState } from "../@tailoring/shared/hooks";
+import { useError, useRequestLoading, useRedirectLoading, useState } from "../@tailoring/shared/hooks";
 import { wrapper } from "../@tailoring/redux";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const { loading } = useRedirectLoading();
   const { requestProcessReducer } = useState();
-  const {} = useError(requestProcessReducer.error);
+  const {} = useError();
+  const {} = useRequestLoading();
 
   return (
     <>
@@ -23,7 +24,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
       <GlobalStyle />
 
-      {loading ? <Spinner /> : !requestProcessReducer.error && <Component {...pageProps} />}
+      {loading ? <Spinner /> : !requestProcessReducer.errors.server && <Component {...pageProps} />}
     </>
   );
 }

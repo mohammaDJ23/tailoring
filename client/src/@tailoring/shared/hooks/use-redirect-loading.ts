@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Router from "next/router";
 
 export function useRedirectLoading() {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     const handleStart = (url: string) => url !== Router.asPath && setLoading(true);
