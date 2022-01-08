@@ -1,10 +1,11 @@
 import dynamic from "next/dynamic";
 import Head from "next/head";
 import Spinner from "../../shared/components/spinner";
+import { AsyncImportObj } from "../../types";
 
 class AsyncImport {
-  import(importedComponents: any, tabTitle: string) {
-    const Page = dynamic(importedComponents, {
+  import<T extends AsyncImportObj>({ component, tabTitle }: T) {
+    const Page = dynamic(component, {
       loading: () => <Spinner />,
       ssr: false
     });

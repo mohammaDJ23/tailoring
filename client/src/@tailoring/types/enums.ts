@@ -55,7 +55,8 @@ export enum Message {
 
 export enum Action {
   LOADING,
-  ERROR,
+  CLIENT_ERROR,
+  SERVER_ERROR,
   SUCCESS,
   CHANGE_INPUT,
   FORM_SUBMIT,
@@ -65,4 +66,8 @@ export enum Action {
 
 export enum Element {
   NAVIGATION = "NAVIGATION"
+}
+
+export enum Loadings {
+  FORM_SUBMITION = "FORM_SUBMITION"
 }

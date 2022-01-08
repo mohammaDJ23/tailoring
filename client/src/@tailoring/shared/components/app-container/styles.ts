@@ -25,11 +25,11 @@ export const content = styled.div`
     padding: 2%;
 
     @media screen and (min-width: 768px) {
-      width: 700px;
+      max-width: 700px;
     }
 
     @media screen and (min-width: 1200px) {
-      width: 850px;
+      max-width: 850px;
     }
   }
 

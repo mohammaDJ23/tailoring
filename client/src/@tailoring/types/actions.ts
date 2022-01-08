@@ -4,10 +4,22 @@ import { Action, GlobalObj, InputObj } from ".";
 
 export interface Loading {
   type: Action.LOADING;
+
+  payload: {
+    loadingProcess: string;
+  };
 }
 
-export interface Error<T = string> {
-  type: Action.ERROR;
+export interface ClientError<T = string> {
+  type: Action.CLIENT_ERROR;
+
+  payload: {
+    error: T;
+  };
+}
+
+export interface ServerError<T = string> {
+  type: Action.SERVER_ERROR;
 
   payload: {
     error: T;
@@ -16,9 +28,13 @@ export interface Error<T = string> {
 
 export interface Success {
   type: Action.SUCCESS;
+
+  payload: {
+    loadingProcess: string;
+  };
 }
 
-export type RequestProcessActions = Loading | Error | Success;
+export type RequestProcessActions = Loading | ClientError | ServerError | Success;
 
 /**@type { form } */
 

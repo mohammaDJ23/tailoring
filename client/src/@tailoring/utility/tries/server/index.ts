@@ -1,5 +1,5 @@
 import { GetServerSidePropsResult } from "next";
-import { error } from "../../../redux/actions";
+import { serverError } from "../../../redux/actions";
 import { Code, GlobalObj, ServerProps } from "../../../types";
 
 class Server {
@@ -9,7 +9,7 @@ class Server {
     } catch (e) {
       const err = e as any;
 
-      options.store.dispatch(error(err.message));
+      options.store.dispatch(serverError(err.message));
 
       switch (err.code) {
         case Code.TEMP_REDIRECT:
