@@ -1,3 +1,3 @@
-import { FormActions, RequestProcessActions } from ".";
+import { EnablingElementActions, FormActions, RequestProcessActions } from ".";
 
-export type AppActions = RequestProcessActions | FormActions;
+export type AppActions = RequestProcessActions | FormActions | EnablingElementActions;

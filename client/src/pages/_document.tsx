@@ -42,9 +42,9 @@ export default class MyDocument extends Document {
         <body>
           <div id="root" />
           <div id="side-navigation" />
+          <div id="backdrop" />
 
           <Main />
-
           <NextScript />
         </body>
       </Html>

@@ -2,10 +2,31 @@ import styled from "styled-components";
 
 export const content = styled.div`
   &.side-navigation {
-    z-index: 2;
+    z-index: 4;
     width: 300px;
     top: 0;
     left: 0;
+    transition: left 0.4s;
+
+    @media screen and (max-width: 768px) {
+      width: 250px;
+    }
+
+    @media screen and (max-width: 300px) {
+      width: 220px;
+    }
+  }
+
+  &.enable-navigation {
+    @media screen and (max-width: 1200px) {
+      left: 0;
+    }
+  }
+
+  &.disable-navigation {
+    @media screen and (max-width: 1200px) {
+      left: -300px;
+    }
   }
 
   .level-one {
