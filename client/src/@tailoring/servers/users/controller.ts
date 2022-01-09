@@ -6,13 +6,23 @@ class UsersController<T extends ServerProps = ServerProps> {
   constructor(private usersService: UsersService<T>) {}
 
   @Bind()
-  details(arg: T) {
-    return this.usersService.details(arg);
+  userShiitDetails(arg: T) {
+    return this.usersService.getShirtList(arg);
   }
 
   @Bind()
-  list(arg: T) {
-    return this.usersService.list(arg);
+  userPantsDetails(arg: T) {
+    return this.usersService.getPantsList(arg);
+  }
+
+  @Bind()
+  getPantsList(arg: T) {
+    return this.usersService.getPantsList(arg);
+  }
+
+  @Bind()
+  getShirtList(arg: T) {
+    return this.usersService.getShirtList(arg);
   }
 }
 

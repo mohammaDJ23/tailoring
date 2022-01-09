@@ -4,8 +4,10 @@ export enum Page {
   LOGIN = "/auth/login",
   PANTS_CREATION = "/creation/pants",
   SHIRT_CREATION = "/creation/shirt",
-  USERS_LIST = "/users/list",
-  USER_DETAILS = "/users/details"
+  USERS_SHIRT_LIST = "/users/list/shirt",
+  USERS_PANTS_LIST = "/users/list/pants",
+  USER_SHIRT_DETAILS = "/users/details/shirt",
+  USER_PANTS_DETAILS = "/users/details/pants"
 }
 
 export enum Server {

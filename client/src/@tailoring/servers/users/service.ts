@@ -1,7 +1,11 @@
 import { ServerProps } from "../../types";
 
 export class UsersService<T extends ServerProps> {
-  async details({ store, context }: T) {}
+  async userShiitDetails({}: T) {}
 
-  async list({ store, context }: T) {}
+  async userPantsDetails({}: T) {}
+
+  async getPantsList({}: T) {}
+
+  async getShirtList({}: T) {}
 }

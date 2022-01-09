@@ -3,7 +3,17 @@ import { Page } from "../../types";
 export const paths = [
   {
     title: "List",
-    path: Page.USERS_LIST
+    paths: [
+      {
+        title: "Pants",
+        path: Page.USERS_PANTS_LIST
+      },
+
+      {
+        title: "Shirt",
+        path: Page.USERS_SHIRT_LIST
+      }
+    ]
   },
 
   {

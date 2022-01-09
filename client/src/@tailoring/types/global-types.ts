@@ -22,6 +22,6 @@ export type GetServerSidePropsData<T extends unknown = unknown> = GetServerSideP
 export type AppStore = Store<RootState, AppActions>;
 
 export interface ServerProps {
-  store: AppStore;
+  store: Store<RootState>;
   context: GetServerSidePropsContext;
 }

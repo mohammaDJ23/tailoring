@@ -1,8 +1,8 @@
 import { Context, createWrapper, HYDRATE } from "next-redux-wrapper";
-import { applyMiddleware, createStore } from "redux";
+import { applyMiddleware, createStore, Store } from "redux";
 import thunk from "redux-thunk";
 import reducers from "./reducers";
-import { AppStore } from "../types";
+import { RootState } from ".";
 
 // export const store = createStore(reducers, {}, applyMiddleware(thunk));
 
@@ -19,4 +19,4 @@ const makeStore = function (context: Context) {
   }, applyMiddleware(thunk));
 };
 
-export const wrapper = createWrapper<AppStore>(makeStore, { debug: true });
+export const wrapper = createWrapper<Store<RootState>>(makeStore, { debug: true });

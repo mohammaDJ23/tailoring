@@ -38,12 +38,16 @@ const SideNavigation: FC = () => {
               {paths.map((item, index) => (
                 <React.Fragment key={index}>
                   <ListItem
-                    onClick={() => (item.paths ? udpateCollapsIndex(collapsIndex === -1 ? index : -1) : redirect("push", item.path))}
+                    onClick={
+                      () =>
+                        item.paths &&
+                        udpateCollapsIndex(collapsIndex === -1 ? index : index === collapsIndex ? -1 : index) /* : redirect("push", item.path) */
+                    }
                     button
                     className="w-100 d-flex align-items-center justify-content-between"
                   >
                     <C.content className="hover">
-                      <C.text className={`${collapsIndex === index || item.path === path ? "c-white" : "c-deactive"}`}>{item.title}</C.text>
+                      <C.text className={`${collapsIndex === index /* item.path === path */ ? "c-white" : "c-deactive"}`}>{item.title}</C.text>
                     </C.content>
 
                     {item.paths && (

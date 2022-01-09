@@ -1,4 +1,4 @@
-import { Dispatch } from "react";
+import { Dispatch } from "redux";
 import { loading, success, clientError } from ".";
 import { RootState } from "..";
 import { Action, AppActions, ChangeInput, ChangeInputObj, GlobalObj, InputObj, Loadings, SetForms } from "../../types";
