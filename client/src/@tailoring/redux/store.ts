@@ -4,8 +4,6 @@ import thunk from "redux-thunk";
 import reducers from "./reducers";
 import { RootState } from ".";
 
-// export const store = createStore(reducers, {}, applyMiddleware(thunk));
-
 const makeStore = function (context: Context) {
   return createStore(function (state: any, action: any) {
     if (action.type === HYDRATE) {

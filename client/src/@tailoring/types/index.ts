@@ -6,3 +6,4 @@ export * from "./reducers";
 export * from "./app-actions";
 export * from "./hooks";
 export * from "./utility";
+export * from "./data";

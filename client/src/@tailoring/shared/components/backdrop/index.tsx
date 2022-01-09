@@ -1,9 +1,9 @@
 import { FC } from "react";
-import { createPortal } from "react-dom";
 import { useAction, useState } from "../../hooks";
 import { Transition } from "react-transition-group";
 import * as C from "./styles";
 import { Element } from "../../../types";
+import { reactPortal } from "../../../utility";
 
 const defaultStyles = {
   opacity: 0,
@@ -21,7 +21,7 @@ const Backdrop: FC = () => {
   const { enablingElementReducer } = useState();
   const { enablingElement } = useAction();
 
-  return createPortal(
+  return reactPortal.create(
     <Transition in={enablingElementReducer.elementName === Element.NAVIGATION} timeout={400}>
       {state => (
         <C.content

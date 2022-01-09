@@ -13,7 +13,7 @@ const SideNavigation: FC = () => {
   const { path, collapsIndex, udpateCollapsIndex } = useSideNavigation();
   const { enablingElementReducer } = useState();
 
-  return reactPortal(
+  return reactPortal.create(
     <>
       <C.content
         className={`side-navigation position-fixed h-100 bg-blue box-shadow ${

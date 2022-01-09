@@ -7,7 +7,9 @@ export enum Page {
   USERS_SHIRT_LIST = "/users/list/shirt",
   USERS_PANTS_LIST = "/users/list/pants",
   USER_SHIRT_DETAILS = "/users/details/shirt",
-  USER_PANTS_DETAILS = "/users/details/pants"
+  USER_PANTS_DETAILS = "/users/details/pants",
+  EDIT_PANTS = "/edit/pants",
+  EDIT_SHIRT = "/edit/shirt"
 }
 
 export enum Server {
@@ -63,7 +65,9 @@ export enum Action {
   CHANGE_INPUT,
   FORM_SUBMIT,
   SET_FOMRS,
-  ENABLING_ELEMENT
+  ENABLING_ELEMENT,
+  SET_LISTS,
+  ENABLING_ITEM_MENU
 }
 
 export enum Element {

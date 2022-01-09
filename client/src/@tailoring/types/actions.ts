@@ -70,3 +70,15 @@ export interface EnablingElement {
 }
 
 export type EnablingElementActions = EnablingElement;
+
+/**@type { lists } */
+
+export interface SetLists {
+  type: Action.SET_LISTS;
+
+  payload: {
+    lists: GlobalObj<any[]>;
+  };
+}
+
+export type ListsActions = SetLists;

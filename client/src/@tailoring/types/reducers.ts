@@ -28,3 +28,9 @@ export interface FormObj<T extends unknown = unknown> {
 export interface EnablingElementObj {
   elementName: string;
 }
+
+/**@type { lists } */
+
+export interface ListsObj {
+  lists: GlobalObj<any[]>;
+}
