@@ -1,13 +1,13 @@
-import { pants, shirt } from "../../models";
+import { createPants, createShirt } from "../../models";
 import { setForms } from "../../redux/actions";
 import { ServerProps } from "../../types";
 
 export class CreationService<T extends ServerProps> {
   async pantsCreation({ store }: T) {
-    store.dispatch(setForms([pants]));
+    store.dispatch(setForms([createPants]));
   }
 
   async shirtCreation({ store }: T) {
-    store.dispatch(setForms([shirt]));
+    store.dispatch(setForms([createShirt]));
   }
 }

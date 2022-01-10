@@ -1,7 +1,12 @@
 import { Form, Input } from "../../types";
 
-export const pants = {
-  [Form.CREATE_NEW_PANTS]: {
+export const editPants = {
+  [Form.EDIT_PANTS]: {
+    [Input.ID]: {
+      value: "",
+      errorText: ""
+    },
+
     [Input.NAME]: {
       value: "",
       errorText: ""
