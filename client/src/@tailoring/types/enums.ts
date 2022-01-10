@@ -54,7 +54,9 @@ export enum Code {
 }
 
 export enum Message {
-  CODE_ONE = "something went wrong."
+  CODE_ONE = "something went wrong.",
+  CODE_TWO = "Unauthorized.",
+  CODE_THREE = "redirecting to another page for some reason."
 }
 
 export enum Action {
@@ -67,7 +69,10 @@ export enum Action {
   SET_FOMRS,
   ENABLING_ELEMENT,
   SET_LISTS,
-  ENABLING_ITEM_MENU
+  ENABLING_ITEM_MENU,
+  SEARCH_QUERY,
+  CHANGE_PAGE,
+  UPDATE_LIST
 }
 
 export enum Element {
@@ -75,5 +80,12 @@ export enum Element {
 }
 
 export enum Loadings {
-  FORM_SUBMITION = "FORM_SUBMITION"
+  FORM_SUBMITION = "FORM_SUBMITION",
+  QUERY = "QUERY",
+  PAGINATION = "PAGINATION"
+}
+
+export enum List {
+  PANTS = "PANTS",
+  SHIRT = "SHIRT"
 }

@@ -31,6 +31,20 @@ export interface EnablingElementObj {
 
 /**@type { lists } */
 
+export interface ListObj {
+  list: { [key: number]: any[] };
+  max: number;
+  current: number;
+}
+
+export type ListType = GlobalObj<ListObj>;
+
 export interface ListsObj {
-  lists: GlobalObj<any[]>;
+  lists: ListType;
+}
+
+/**@type { search query } */
+
+export interface SearchQueryObj {
+  query: string;
 }
