@@ -1,7 +1,12 @@
 import { Form, Input } from "../../types";
 
-export const shirt = {
-  [Form.CREATE_NEW_SHIRT]: {
+export const editShirt = {
+  [Form.EDIT_SHIRT]: {
+    [Input.ID]: {
+      value: "",
+      errorText: ""
+    },
+
     [Input.NAME]: {
       value: "",
       errorText: ""

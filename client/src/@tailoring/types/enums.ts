@@ -25,7 +25,9 @@ export enum Form {
   SIGNUP = "SIGNUP_FORM",
   LOGIN = "LOGIN_FORM",
   CREATE_NEW_PANTS = "CREATE_NEW_PANTS_FORM",
-  CREATE_NEW_SHIRT = "CREATE_NEW_SHIRT_FORM"
+  CREATE_NEW_SHIRT = "CREATE_NEW_SHIRT_FORM",
+  EDIT_PANTS = "EDIT_PANTS",
+  EDIT_SHIRT = "EDIT_SHIRT"
 }
 
 export enum Input {
@@ -45,7 +47,8 @@ export enum Input {
   PHONE = "phone",
   SLEEVE_RING = "sleeveRing",
   SEAT = "seat",
-  PANT_SLIPPER = "pantSlipper"
+  PANT_SLIPPER = "pantSlipper",
+  ID = "id"
 }
 
 export enum Code {
