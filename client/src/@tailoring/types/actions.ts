@@ -1,4 +1,4 @@
-import { Action, GlobalObj, InputObj } from ".";
+import { Action, GlobalObj, InputObj, ListType } from ".";
 
 /**@type { request process }  */
 
@@ -77,8 +77,48 @@ export interface SetLists {
   type: Action.SET_LISTS;
 
   payload: {
-    lists: GlobalObj<any[]>;
+    list: ListType;
   };
 }
 
-export type ListsActions = SetLists;
+export interface ChangePageObj {
+  page: number;
+  type: string;
+  list: any[];
+}
+
+export interface ChnagePage {
+  type: Action.CHANGE_PAGE;
+
+  payload: {
+    page: number;
+    type: string;
+    list: any[];
+  };
+}
+
+export interface UpdateListObj {
+  max: number;
+  type: string;
+  list: any[];
+}
+
+export interface UpdateList {
+  type: Action.UPDATE_LIST;
+  payload: UpdateListObj;
+}
+
+export type ListsActions = SetLists | ChnagePage | UpdateList;
+
+/**@type { search query } */
+
+export interface SearchQuery {
+  type: Action.SEARCH_QUERY;
+
+  payload: {
+    query: string;
+    type: string;
+  };
+}
+
+export type SearchQueryActions = SearchQuery;

@@ -20,8 +20,8 @@ const SideNavigation: FC = () => {
           enablingElementReducer.elementName === Element.NAVIGATION ? "enable-navigation" : "disable-navigation"
         }`}
       >
-        <C.content className="wh-100 bg-blue">
-          <C.content className="wh-100 overflow-auto bg-blue">
+        <C.content className="wh-100">
+          <C.content className="wh-100 overflow-auto">
             <C.content className="w-100 mb-4 p-3">
               <C.content className="d-flex align-items-center justify-content-start">
                 <C.content className="mr-14">

@@ -39,7 +39,11 @@ function formOptimization(form: GlobalObj<InputObj>) {
 async function sendInformation(forms: GlobalObj<InputObj>) {
   const optimizedForm = formOptimization(forms);
 
-  return {};
+  return new Promise<{}>(function (resolve) {
+    setTimeout(function () {
+      resolve({});
+    }, 2000);
+  });
 }
 
 export function formSubmit(form: string) {
