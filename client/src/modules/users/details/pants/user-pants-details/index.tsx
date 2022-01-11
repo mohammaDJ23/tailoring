@@ -1,12 +1,16 @@
 import { FC } from "react";
-import { useState } from "../../../../../@tailoring/shared/hooks";
+import { useRedirect, useState } from "../../../../../@tailoring/shared/hooks";
 import * as C from "./styles";
 import Card from "../../../../../@tailoring/shared/components/card";
 import { Col, Row } from "reactstrap";
 import { Button } from "@mui/material";
+import { useRouter } from "next/router";
+import { Page } from "../../../../../@tailoring/types";
 
 const UserPantsDetails: FC = () => {
   const { detailsReducer } = useState();
+  const { redirect } = useRedirect();
+  const { query } = useRouter();
   const pants = detailsReducer.pants!;
 
   return (
@@ -191,7 +195,7 @@ const UserPantsDetails: FC = () => {
 
           <Col>
             <C.content>
-              <Button fullWidth variant="contained">
+              <Button onClick={() => redirect("push", `${Page.EDIT_PANTS}/${query.id as string}`)} fullWidth type="button" variant="contained">
                 Edit the pants
               </Button>
             </C.content>
