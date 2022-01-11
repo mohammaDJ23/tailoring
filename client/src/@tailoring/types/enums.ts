@@ -75,7 +75,9 @@ export enum Action {
   ENABLING_ITEM_MENU,
   SEARCH_QUERY,
   CHANGE_PAGE,
-  UPDATE_LIST
+  UPDATE_LIST,
+  SET_PANTS_DETAILS,
+  SET_SHIRT_DETAILS
 }
 
 export enum Element {

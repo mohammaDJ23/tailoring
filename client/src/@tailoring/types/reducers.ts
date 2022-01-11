@@ -1,4 +1,4 @@
-import { GlobalObj } from ".";
+import { GlobalObj, Input } from ".";
 
 /**@type { request process } */
 
@@ -47,4 +47,35 @@ export interface ListsObj {
 
 export interface SearchQueryObj {
   query: string;
+}
+
+/**@type { details } */
+
+interface PantsObj {
+  [Input.ID]: number;
+  [Input.NAME]: string;
+  [Input.HEIGHT]: number;
+  [Input.WAIST]: number;
+  [Input.SEAT]: number;
+  [Input.THIGHT]: number;
+  [Input.KNEE]: number;
+  [Input.PANT_SLIPPER]: number;
+  [Input.HIP]: number;
+}
+
+interface ShirtObj {
+  [Input.ID]: number;
+  [Input.NAME]: string;
+  [Input.HEIGHT]: number;
+  [Input.SHOULDER]: number;
+  [Input.SLEEVE]: number;
+  [Input.SLEEVE_RING]: number;
+  [Input.ARMPIT]: number;
+  [Input.CHEST]: number;
+  [Input.COLLAR]: number;
+}
+
+export interface DetailsObj {
+  pants?: PantsObj;
+  shirt?: ShirtObj;
 }
