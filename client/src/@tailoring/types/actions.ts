@@ -1,4 +1,4 @@
-import { Action, GlobalObj, InputObj, ListType } from ".";
+import { Action, DetailsObj, GlobalObj, InputObj, ListType } from ".";
 
 /**@type { request process }  */
 
@@ -122,3 +122,23 @@ export interface SearchQuery {
 }
 
 export type SearchQueryActions = SearchQuery;
+
+/**@type { details } */
+
+export interface SetPantsDetials {
+  type: Action.SET_PANTS_DETAILS;
+
+  payload: {
+    pants: DetailsObj["pants"];
+  };
+}
+
+export interface SetShirtDetials {
+  type: Action.SET_SHIRT_DETAILS;
+
+  payload: {
+    shirt: DetailsObj["shirt"];
+  };
+}
+
+export type DetailsActions = SetPantsDetials | SetShirtDetials;

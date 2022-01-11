@@ -167,7 +167,7 @@ const GlobalStyle: GlobalStyleComponent<{}, DefaultTheme> = createGlobalStyle`
   }
   
   .c-blue {
-    color: var(--defualt-color);
+    color: var(--default-color);
   }
   
   .c-white {
@@ -191,7 +191,7 @@ const GlobalStyle: GlobalStyleComponent<{}, DefaultTheme> = createGlobalStyle`
   }
 
   .bo-blue {
-    border-color: var(--defualt-color);
+    border-color: var(--default-color);
   }
 
   .box-shadow {
@@ -228,6 +228,8 @@ const GlobalStyle: GlobalStyleComponent<{}, DefaultTheme> = createGlobalStyle`
   *::-webkit-scrollbar-thumb:horizontal {
     border-radius: 4px;
   }
+
+
 `;
 
 export default GlobalStyle;

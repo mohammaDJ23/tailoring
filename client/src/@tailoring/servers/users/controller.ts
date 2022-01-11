@@ -7,12 +7,12 @@ class UsersController<T extends ServerProps = ServerProps> {
 
   @Bind()
   userShiitDetails(arg: T) {
-    return this.usersService.getShirtList(arg);
+    return this.usersService.userShirtDetails(arg);
   }
 
   @Bind()
   userPantsDetails(arg: T) {
-    return this.usersService.getPantsList(arg);
+    return this.usersService.userPantsDetails(arg);
   }
 
   @Bind()
