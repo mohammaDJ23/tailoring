@@ -44,6 +44,28 @@ const UserPantsDetails: FC = () => {
               <C.content className="d-flex align-items-center justify-content-start">
                 <C.content className="mr-14">
                   <C.content>
+                    <C.img src="/svgs/phone.svg" />
+                  </C.content>
+                </C.content>
+
+                <C.content className="d-flex align-items-start flex-column justify-content-start">
+                  <C.content>
+                    <C.text className="f-bold">Phone</C.text>
+                  </C.content>
+
+                  <C.content className="text-overflow-hidden">
+                    <C.text className="f-bold">{pants.phone}</C.text>
+                  </C.content>
+                </C.content>
+              </C.content>
+            </Card>
+          </Col>
+
+          <Col xs={12} md={6}>
+            <Card>
+              <C.content className="d-flex align-items-center justify-content-start">
+                <C.content className="mr-14">
+                  <C.content>
                     <C.img src="/svgs/height.svg" />
                   </C.content>
                 </C.content>
@@ -193,7 +215,7 @@ const UserPantsDetails: FC = () => {
             </Card>
           </Col>
 
-          <Col>
+          <Col xs={12}>
             <C.content>
               <Button onClick={() => redirect("push", `${Page.EDIT_PANTS}/${query.id as string}`)} fullWidth type="button" variant="contained">
                 Edit the pants

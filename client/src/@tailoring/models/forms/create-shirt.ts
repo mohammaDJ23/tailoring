@@ -40,6 +40,11 @@ export const createShirt = {
     [Input.COLLAR]: {
       value: "",
       errorText: ""
+    },
+
+    [Input.PHONE]: {
+      value: "",
+      errorText: ""
     }
   }
 };

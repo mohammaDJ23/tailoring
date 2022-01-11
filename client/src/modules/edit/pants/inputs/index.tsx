@@ -148,6 +148,21 @@ const Inputs: FC = () => {
           </FormControl>
         </Col>
 
+        <Col>
+          <FormControl fullWidth>
+            <InputLabel htmlFor="phone">Phone number</InputLabel>
+
+            <Inpt
+              value={pantsForm[Input.PHONE].value}
+              type="text"
+              onChange={event => changeInput({ form: Form.CREATE_NEW_PANTS, input: Input.PHONE, value: event.target.value })}
+              fullWidth
+            />
+
+            <FormHelperText></FormHelperText>
+          </FormControl>
+        </Col>
+
         <Col className="mb-4">
           <Button variant="contained" fullWidth type="submit">
             Send

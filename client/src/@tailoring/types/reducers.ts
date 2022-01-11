@@ -54,6 +54,7 @@ export interface SearchQueryObj {
 interface PantsObj {
   [Input.ID]: number;
   [Input.NAME]: string;
+  [Input.PHONE]: string;
   [Input.HEIGHT]: number;
   [Input.WAIST]: number;
   [Input.SEAT]: number;
@@ -66,6 +67,7 @@ interface PantsObj {
 interface ShirtObj {
   [Input.ID]: number;
   [Input.NAME]: string;
+  [Input.PHONE]: string;
   [Input.HEIGHT]: number;
   [Input.SHOULDER]: number;
   [Input.SLEEVE]: number;

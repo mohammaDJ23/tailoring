@@ -45,6 +45,11 @@ export const editPants = {
     [Input.HIP]: {
       value: "",
       errorText: ""
+    },
+
+    [Input.PHONE]: {
+      value: "",
+      errorText: ""
     }
   }
 };

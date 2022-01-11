@@ -45,6 +45,11 @@ export const editShirt = {
     [Input.COLLAR]: {
       value: "",
       errorText: ""
+    },
+
+    [Input.PHONE]: {
+      value: "",
+      errorText: ""
     }
   }
 };

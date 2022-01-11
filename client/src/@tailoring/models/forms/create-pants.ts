@@ -40,6 +40,11 @@ export const createPants = {
     [Input.HIP]: {
       value: "",
       errorText: ""
+    },
+
+    [Input.PHONE]: {
+      value: "",
+      errorText: ""
     }
   }
 };
