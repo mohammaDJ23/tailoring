@@ -26,9 +26,11 @@ export class SerializeInterceptor implements NestInterceptor {
       map((data: any) => {
         // Run something before the resposne is sent out
 
-        return plainToClass(this.dto, data, {
+        const serializedData = plainToClass(this.dto, data, {
           excludeExtraneousValues: true,
         });
+
+        return { data: serializedData, error: {} };
       }),
     );
   }
