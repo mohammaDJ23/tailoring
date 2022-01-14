@@ -5,7 +5,7 @@ Content-Type: application/json
 
 {
   "name": "mohammad nowresideh",
-  "email": "mohammad.nowresideh@utechia.com",
+  "email": "mohammad.nowresideh@gmail.com",
   "password": "123!@#Ss"
 }
 
@@ -22,4 +22,4 @@ Content-Type: application/json
 ### get user
 
 GET http://localhost:5000/user
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY0MjE0MDczMiwiZXhwIjoxNjQyMTQ0MzMyfQ.m8jhwbkCstXFa3JfjbZNhZgdvQHOHJmwpiOI25EVq6Y
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY0MjE1NjcyMywiZXhwIjoxNjQyMTYwMzIzfQ.wpBSSO0s2sXZadk_Ocnq-w_wsXF7hkRRPjqCaCRTeq4

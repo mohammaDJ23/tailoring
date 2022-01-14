@@ -1,4 +1,12 @@
-import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
+import {
+  BadRequestException,
+  Body,
+  Controller,
+  Get,
+  NotFoundException,
+  Post,
+  UseGuards,
+} from '@nestjs/common';
 import { JwtAuthGuard } from 'src/guards/jwt-auth.guard';
 import { Serialize } from 'src/interceptors/serialize-interceptor';
 import { AuthService } from './auth.service';
@@ -8,11 +16,11 @@ import { SignupDto } from './dtos/signup.dto';
 import { UserDto } from './dtos/user.dto';
 
 @Controller('user')
+@Serialize(UserDto)
 export class UserController {
   constructor(private readonly authService: AuthService) {}
 
   @Post('/signup')
-  @Serialize(UserDto)
   signup(@Body() body: SignupDto) {
     return this.authService.signup(body);
   }
@@ -24,7 +32,6 @@ export class UserController {
 
   @Get()
   @UseGuards(JwtAuthGuard)
-  @Serialize(UserDto)
   getUser(@CurrentUser() user) {
     return user;
   }

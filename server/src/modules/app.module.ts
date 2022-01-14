@@ -6,6 +6,8 @@ import { PantsModule } from './pants/pants.module';
 import { ShirtModule } from './shirt/shirt.module';
 import { UserModule } from './user/user.module';
 import { User } from './user/user.entity';
+import { APP_FILTER } from '@nestjs/core';
+import { AllExceptionsFilter } from 'src/filters/http-exception.filter';
 
 @Module({
   imports: [
@@ -24,6 +26,9 @@ import { User } from './user/user.entity';
     UserModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+    { provide: APP_FILTER, useClass: AllExceptionsFilter },
+  ],
 })
 export class AppModule {}
