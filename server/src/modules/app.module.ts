@@ -8,18 +8,29 @@ import { UserModule } from './user/user.module';
 import { User } from './user/user.entity';
 import { APP_FILTER } from '@nestjs/core';
 import { AllExceptionsFilter } from 'src/filters/http-exception.filter';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot({
-      type: 'postgres',
-      host: 'localhost',
-      port: 5432,
-      username: 'postgres',
-      password: 'JIfO*#f8992dsFOsoFJ',
-      database: 'postgres',
-      entities: [User],
-      synchronize: true,
+    TypeOrmModule.forRootAsync({
+      inject: [ConfigService],
+
+      useFactory: function (config: ConfigService) {
+        return {
+          type: 'postgres',
+          host: 'localhost',
+          port: 5432,
+          username: 'postgres',
+          password: config.get<string>('DATABASE_PASSWORD'),
+          database: 'postgres',
+          entities: [User],
+          synchronize: true,
+        };
+      },
+    }),
+    ConfigModule.forRoot({
+      isGlobal: true,
+      envFilePath: `.env.${process.env.NODE_ENV}`,
     }),
     PantsModule,
     ShirtModule,

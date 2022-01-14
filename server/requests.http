@@ -22,4 +22,4 @@ Content-Type: application/json
 ### get user
 
 GET http://localhost:5000/user
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY0MjE1NjcyMywiZXhwIjoxNjQyMTYwMzIzfQ.wpBSSO0s2sXZadk_Ocnq-w_wsXF7hkRRPjqCaCRTeq4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY0MjE2MzI2MCwiZXhwIjoxNjQyMTY2ODYwfQ.20THG2JnHgBy1B5bo0iNUDFvZ8-xoW73WQJI7Thg3kE

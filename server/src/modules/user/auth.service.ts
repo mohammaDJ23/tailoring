@@ -4,12 +4,14 @@ import { LoginDto } from './dtos/login.dto';
 import { SignupDto } from './dtos/signup.dto';
 import { UserService } from './user.service';
 import { JwtService } from '@nestjs/jwt';
+import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class AuthService {
   constructor(
     private readonly userService: UserService,
     private readonly jwtService: JwtService,
+    private readonly configService: ConfigService,
   ) {}
 
   async signup(body: SignupDto) {
@@ -47,6 +49,9 @@ export class AuthService {
 
     const accessToken = this.jwtService.sign({ userId: user.id });
 
-    return { accessToken };
+    return {
+      accessToken,
+      expire: this.configService.get<string>('JWT_EXPIRATION'),
+    };
   }
 }

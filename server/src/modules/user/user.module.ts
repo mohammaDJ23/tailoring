@@ -1,4 +1,5 @@
-import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
+import { Module } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthService } from './auth.service';
@@ -10,9 +11,15 @@ import { UserService } from './user.service';
 @Module({
   imports: [
     TypeOrmModule.forFeature([User]),
-    JwtModule.register({
-      secret: 'fjioDFJIu489#4354',
-      signOptions: { expiresIn: '1h' },
+    JwtModule.registerAsync({
+      inject: [ConfigService],
+
+      useFactory: function (config: ConfigService) {
+        return {
+          secret: config.get<string>('JWT_SECRET_KEY'),
+          signOptions: { expiresIn: config.get<string>('JWT_EXPIRATION') },
+        };
+      },
     }),
   ],
   controllers: [UserController],
