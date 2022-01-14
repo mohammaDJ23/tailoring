@@ -1,13 +1,11 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { UsersModule } from './users/users.module';
-import { AuthModule } from './auth/auth.module';
-import { CreationModule } from './creation/creation.module';
-import { EditationModule } from './editation/editation.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { SignupEntity } from './auth/signup.entity';
-import { LoginEntity } from './auth/login.entity';
+import { PantsModule } from './pants/pants.module';
+import { ShirtModule } from './shirt/shirt.module';
+import { UserModule } from './user/user.module';
+import { User } from './user/user.entity';
 
 @Module({
   imports: [
@@ -18,13 +16,12 @@ import { LoginEntity } from './auth/login.entity';
       username: 'postgres',
       password: 'JIfO*#f8992dsFOsoFJ',
       database: 'postgres',
-      entities: [SignupEntity, LoginEntity],
+      entities: [User],
       synchronize: true,
     }),
-    UsersModule,
-    AuthModule,
-    CreationModule,
-    EditationModule,
+    PantsModule,
+    ShirtModule,
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService],
