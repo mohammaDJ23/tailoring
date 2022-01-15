@@ -12,8 +12,8 @@ import { JwtAuthGuard } from 'src/guards/jwt-auth.guard';
 import { Serialize } from 'src/interceptors/serialize-interceptor';
 import { CreatePantsDto } from './dtos/create-pants.dto';
 import { EditPantsDto } from './dtos/edit-pants.dto';
-import { IdDto } from './dtos/id.dto';
-import { PageDto } from './dtos/page.dto';
+import { IdDto } from '../dtos/id.dto';
+import { PageDto } from '../dtos/page.dto';
 import { PantsListDto } from './dtos/pants-list.dto';
 import { PantsDto } from './dtos/pants.dto';
 import { PantsService } from './pants.service';
@@ -38,7 +38,7 @@ export class PantsController {
   @Get('/list')
   @Serialize(PantsListDto)
   list(@Query(ValidationPipe) query: PageDto) {
-    return this.pantsService.list(parseInt(query.page));
+    return this.pantsService.list(query.page);
   }
 
   @Get('/details')

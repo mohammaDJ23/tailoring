@@ -1,4 +1,11 @@
-import { IsInt, IsNumber, IsPositive, IsString, Min } from 'class-validator';
+import {
+  IsInt,
+  IsNumber,
+  IsNumberString,
+  IsPositive,
+  IsString,
+  Min,
+} from 'class-validator';
 
 export class EditPantsDto {
   @IsNumber()
@@ -35,6 +42,6 @@ export class EditPantsDto {
   @IsPositive()
   hip: number;
 
-  @IsString()
+  @IsNumberString()
   phone: string;
 }

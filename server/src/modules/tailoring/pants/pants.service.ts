@@ -52,14 +52,14 @@ export class PantsService {
   }
 
   async list(page: number) {
-    const [list, max] = await this.repository.findAndCount({
+    const [list, total] = await this.repository.findAndCount({
       take: ITEMS_PER_PAGE,
       skip: ITEMS_PER_PAGE * (page - 1),
     });
 
     return {
       list,
-      max: Math.ceil(max / ITEMS_PER_PAGE),
+      max: !list.length ? 0 : Math.ceil(total / ITEMS_PER_PAGE),
     };
   }
 }
