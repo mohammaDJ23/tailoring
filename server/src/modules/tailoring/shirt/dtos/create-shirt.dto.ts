@@ -1,11 +1,11 @@
 import {
-  IsNumber,
-  IsNumberString,
-  IsPositive,
   IsString,
+  IsNumber,
+  IsPositive,
+  IsNumberString,
 } from 'class-validator';
 
-export class CreatePantsDto {
+export class CreateShirtDto {
   @IsString()
   name: string;
 
@@ -15,27 +15,27 @@ export class CreatePantsDto {
 
   @IsNumber()
   @IsPositive()
-  waist: number;
+  shoulder: number;
 
   @IsNumber()
   @IsPositive()
-  seat: number;
+  sleeve: number;
 
   @IsNumber()
   @IsPositive()
-  thight: number;
+  sleeveRing: number;
 
   @IsNumber()
   @IsPositive()
-  knee: number;
+  armpit: number;
 
   @IsNumber()
   @IsPositive()
-  pantSlipper: number;
+  chest: number;
 
   @IsNumber()
   @IsPositive()
-  hip: number;
+  collar: number;
 
   @IsNumberString()
   phone: string;
