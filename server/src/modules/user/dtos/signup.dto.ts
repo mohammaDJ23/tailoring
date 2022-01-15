@@ -1,8 +1,7 @@
 import { IsString, Length, Matches } from 'class-validator';
 
 export class SignupDto {
-  @IsString({ message: 'name should be string' })
-  @Length(3, 70)
+  @IsString()
   name: string;
 
   @Matches(

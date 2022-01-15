@@ -2,13 +2,14 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { PantsModule } from './pants/pants.module';
-import { ShirtModule } from './shirt/shirt.module';
 import { UserModule } from './user/user.module';
 import { User } from './user/user.entity';
 import { APP_FILTER } from '@nestjs/core';
 import { AllExceptionsFilter } from 'src/filters/http-exception.filter';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { Pants } from './tailoring/pants/pants.entity';
+import { Shirt } from './tailoring/shirt/shirt.entity';
+import { TailoringModule } from './tailoring/tailoring.module';
 
 @Module({
   imports: [
@@ -23,7 +24,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
           username: 'postgres',
           password: config.get<string>('DATABASE_PASSWORD'),
           database: 'postgres',
-          entities: [User],
+          entities: [User, Pants, Shirt],
           synchronize: true,
         };
       },
@@ -32,9 +33,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
       isGlobal: true,
       envFilePath: `.env.${process.env.NODE_ENV}`,
     }),
-    PantsModule,
-    ShirtModule,
     UserModule,
+    TailoringModule,
   ],
   controllers: [AppController],
   providers: [

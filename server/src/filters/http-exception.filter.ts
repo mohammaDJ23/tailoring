@@ -6,6 +6,7 @@ import {
   HttpStatus,
 } from '@nestjs/common';
 import { HttpAdapterHost } from '@nestjs/core';
+import { GetResponseErrorObj } from 'src/shared/types/currentUser.type';
 
 @Catch()
 export class AllExceptionsFilter implements ExceptionFilter {
@@ -23,7 +24,9 @@ export class AllExceptionsFilter implements ExceptionFilter {
 
     const httpMessage =
       exception instanceof HttpException
-        ? exception.message
+        ? typeof exception.getResponse() === 'string'
+          ? exception.getResponse()
+          : (exception.getResponse() as GetResponseErrorObj).message
         : exception.message || 'Internal server error';
 
     const responseBody = {

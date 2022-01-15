@@ -1,16 +1,6 @@
-import {
-  BadRequestException,
-  Body,
-  Controller,
-  Get,
-  NotFoundException,
-  Post,
-  UseGuards,
-} from '@nestjs/common';
-import { JwtAuthGuard } from 'src/guards/jwt-auth.guard';
+import { Body, Controller, Post } from '@nestjs/common';
 import { Serialize } from 'src/interceptors/serialize-interceptor';
 import { AuthService } from './auth.service';
-import { CurrentUser } from './decorators/current-user.decorator';
 import { LoginDto } from './dtos/login.dto';
 import { SignupDto } from './dtos/signup.dto';
 import { UserDto } from './dtos/user.dto';
@@ -28,11 +18,5 @@ export class UserController {
   @Post('/login')
   login(@Body() body: LoginDto) {
     return this.authService.login(body);
-  }
-
-  @Get()
-  @UseGuards(JwtAuthGuard)
-  getUser(@CurrentUser() user) {
-    return user;
   }
 }
