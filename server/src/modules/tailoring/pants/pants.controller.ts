@@ -17,7 +17,14 @@ import { PageDto } from '../dtos/page.dto';
 import { PantsListDto } from './dtos/pants-list.dto';
 import { PantsDto } from './dtos/pants.dto';
 import { PantsService } from './pants.service';
-import { ApiTags, ApiBody, ApiQuery, ApiBearerAuth } from '@nestjs/swagger';
+import {
+  ApiTags,
+  ApiBody,
+  ApiQuery,
+  ApiBearerAuth,
+  ApiResponse,
+} from '@nestjs/swagger';
+import { Pants } from './pants.entity';
 
 @Controller('pants')
 @UseGuards(JwtAuthGuard)
@@ -29,6 +36,7 @@ export class PantsController {
   @ApiBearerAuth()
   @ApiTags('pants')
   @ApiBody({ type: CreatePantsDto })
+  @ApiResponse({ type: Pants })
   create(@Body() body: CreatePantsDto) {
     return this.pantsService.create(body);
   }
@@ -38,6 +46,7 @@ export class PantsController {
   @ApiBearerAuth()
   @ApiTags('pants')
   @ApiBody({ type: EditPantsDto })
+  @ApiResponse({ type: Pants })
   edit(@Body() body: EditPantsDto) {
     return this.pantsService.edit(body);
   }
@@ -47,6 +56,7 @@ export class PantsController {
   @ApiBearerAuth()
   @ApiTags('pants')
   @ApiQuery({ name: 'page' })
+  @ApiResponse({ type: PantsListDto })
   list(@Query(ValidationPipe) query: PageDto) {
     return this.pantsService.list(query.page);
   }
@@ -56,6 +66,7 @@ export class PantsController {
   @ApiBearerAuth()
   @ApiTags('pants')
   @ApiQuery({ name: 'id' })
+  @ApiResponse({ type: Pants })
   details(@Query(ValidationPipe) query: IdDto) {
     return this.pantsService.findOne(parseInt(query.id));
   }

@@ -17,7 +17,14 @@ import { EditShirtDto } from './dtos/edit-shirt.dto';
 import { ShirtListDto } from './dtos/shirt-list.dto';
 import { ShirtDto } from './dtos/shirt.dto';
 import { ShirtService } from './shirt.service';
-import { ApiTags, ApiBody, ApiQuery, ApiBearerAuth } from '@nestjs/swagger';
+import {
+  ApiTags,
+  ApiBody,
+  ApiQuery,
+  ApiBearerAuth,
+  ApiResponse,
+} from '@nestjs/swagger';
+import { Shirt } from './shirt.entity';
 
 @Controller('shirt')
 @UseGuards(JwtAuthGuard)
@@ -29,6 +36,7 @@ export class ShirtController {
   @ApiBearerAuth()
   @ApiTags('shirt')
   @ApiBody({ type: CreateShirtDto })
+  @ApiResponse({ type: Shirt })
   create(@Body() body: CreateShirtDto) {
     return this.shirtService.create(body);
   }
@@ -38,6 +46,7 @@ export class ShirtController {
   @ApiBearerAuth()
   @ApiTags('shirt')
   @ApiBody({ type: EditShirtDto })
+  @ApiResponse({ type: Shirt })
   edit(@Body() body: EditShirtDto) {
     return this.shirtService.edit(body);
   }
@@ -47,6 +56,7 @@ export class ShirtController {
   @ApiBearerAuth()
   @ApiTags('shirt')
   @ApiQuery({ name: 'page' })
+  @ApiResponse({ type: ShirtListDto })
   list(@Query(ValidationPipe) query: PageDto) {
     return this.shirtService.list(query.page);
   }
@@ -56,6 +66,7 @@ export class ShirtController {
   @ApiBearerAuth()
   @ApiTags('shirt')
   @ApiQuery({ name: 'id' })
+  @ApiResponse({ type: Shirt })
   details(@Query(ValidationPipe) query: IdDto) {
     return this.shirtService.findOne(parseInt(query.id));
   }
