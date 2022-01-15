@@ -2,7 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
-import { UserObj } from 'src/types/currentUser.type';
+import { UserObj } from 'src/shared/types/currentUser.type';
 import { UserService } from './user.service';
 
 @Injectable()

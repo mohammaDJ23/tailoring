@@ -19,7 +19,50 @@ Content-Type: application/json
   "password": "123!@#Ss"
 }
 
-### get user
+### create pants
 
-GET http://localhost:5000/user
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY0MjE2MzI2MCwiZXhwIjoxNjQyMTY2ODYwfQ.20THG2JnHgBy1B5bo0iNUDFvZ8-xoW73WQJI7Thg3kE
+POST http://localhost:5000/pants/create
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY0MjE4MTAzMiwiZXhwIjoxNjQyMTg0NjMyfQ.xSPOjPPmeW6HTtSN9gKe_zdFs6XqDGXVUE0RsI_3OS4
+
+{
+  "name": "vahid",
+  "height": 220,
+  "waist": 123,
+  "seat": 145,
+  "thight": 12,
+  "knee": 64,
+  "pantSlipper": 77,
+  "hip": 23,
+  "phone": "09174163042"
+}
+
+### edit pants
+
+PATCH http://localhost:5000/pants/edit
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY0MjE4MTAzMiwiZXhwIjoxNjQyMTg0NjMyfQ.xSPOjPPmeW6HTtSN9gKe_zdFs6XqDGXVUE0RsI_3OS4
+
+{
+  "id": 1,
+  "name": "ali nowresideh",
+  "height": 220,
+  "waist": 123,
+  "seat": 145,
+  "thight": 12,
+  "knee": 64,
+  "pantSlipper": 77,
+  "hip": 23,
+  "phone": "09174163042"
+}
+
+### list of pants
+
+GET http://localhost:5000/pants/list?page=1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY0MjE4MTAzMiwiZXhwIjoxNjQyMTg0NjMyfQ.xSPOjPPmeW6HTtSN9gKe_zdFs6XqDGXVUE0RsI_3OS4
+
+### get details
+
+GET http://localhost:5000/pants/details?id=12
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY0MjE4MTAzMiwiZXhwIjoxNjQyMTg0NjMyfQ.xSPOjPPmeW6HTtSN9gKe_zdFs6XqDGXVUE0RsI_3OS4
+
