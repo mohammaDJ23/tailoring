@@ -110,6 +110,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhd
 
 ### get details
 
-GET http://localhost:5000/shirt/details?id=1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY0MjIyMzAxNSwiZXhwIjoxNjQyMjIzMDc1fQ.BMj63cn8V2HX3ulxeiDQ7KwXxbFCTtEDvZ6NLkOJPc4
+GET http://localhost:5000/shirt/details?id=2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY0MjIzMjE3OSwiZXhwIjoxNjQyMjMyMjM5fQ.uC-MPMZ170dkXerjwXWmKY4qOret2fM_rNYIcE6V1os
 
