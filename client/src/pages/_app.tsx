@@ -1,5 +1,6 @@
 import type { AppProps } from "next/app";
 import { Toaster } from "react-hot-toast";
+import { SessionProvider } from "next-auth/react";
 import GlobalStyle from "../styles";
 import "../styles/fonts.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -14,18 +15,21 @@ function MyApp({ Component, pageProps }: AppProps) {
   const {} = useRequestLoading();
 
   return (
-    <>
+    <SessionProvider session={pageProps.session}>
       <Toaster
         position="top-center"
         toastOptions={{
-          duration: 5000
+          duration: 5000,
+          style: {
+            maxWidth: "400px"
+          }
         }}
       />
 
       <GlobalStyle />
 
       {loading ? <Spinner /> : !requestProcessReducer.errors.server && <Component {...pageProps} />}
-    </>
+    </SessionProvider>
   );
 }
 

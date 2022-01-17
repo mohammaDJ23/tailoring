@@ -1,94 +1,55 @@
+import { GetServerSidePropsContext } from "next";
+import { listsApis, serverApis } from "../../apis";
 import { setLists, setPantsDetails, setShirtDetails } from "../../redux/actions";
-import { List, ListObj, ServerProps } from "../../types";
+import { Rest } from "../../services";
+import { ListRes, List, ListObj, ServerProps, ShirtListObj, PantsListObj, Server, DetailsObj } from "../../types";
+import { getAccessToken } from "../../utility";
 
 export class UsersService<T extends ServerProps> {
+  private async getDetails<T extends Partial<T>>(context: GetServerSidePropsContext, detailsType: number) {
+    const accessToken = await getAccessToken(context);
+
+    return new Rest().req<T>(serverApis[detailsType]({ accessToken, id: context.query?.id || "-1" }));
+  }
+
+  private async getList<T extends any[]>(context: GetServerSidePropsContext, listType: string): Promise<ListObj<T>> {
+    const accessToken = await getAccessToken(context);
+
+    const shirt = await new Rest().req<ListRes<T>>(listsApis[listType]({ accessToken, page: 1 }));
+
+    const list: ListObj<T> = {
+      list: {
+        [1]: shirt.list
+      },
+
+      max: shirt.max,
+      current: 1
+    };
+
+    return list;
+  }
+
   async userShirtDetails({ store, context }: T) {
-    const list = [
-      { id: 1, name: "Mohammad nowresideh", height: 12, shoulder: 12, sleeve: 13, sleeveRing: 12, armpit: 54, chest: 45, collar: 12, phone: "09174163042" },
-      { id: 2, name: "Mohammad nowresideh", height: 12, shoulder: 12, sleeve: 13, sleeveRing: 12, armpit: 54, chest: 45, collar: 12, phone: "09174163042" },
-      { id: 3, name: "Mohammad nowresideh", height: 12, shoulder: 12, sleeve: 13, sleeveRing: 12, armpit: 54, chest: 45, collar: 12, phone: "09174163042" },
-      { id: 4, name: "Mohammad nowresideh", height: 12, shoulder: 12, sleeve: 13, sleeveRing: 12, armpit: 54, chest: 45, collar: 12, phone: "09174163042" },
-      { id: 5, name: "Mohammad nowresideh", height: 12, shoulder: 12, sleeve: 13, sleeveRing: 12, armpit: 54, chest: 45, collar: 12, phone: "09174163042" },
-      { id: 6, name: "Mohammad nowresideh", height: 12, shoulder: 12, sleeve: 13, sleeveRing: 12, armpit: 54, chest: 45, collar: 12, phone: "09174163042" },
-      { id: 7, name: "Mohammad nowresideh", height: 12, shoulder: 12, sleeve: 13, sleeveRing: 12, armpit: 54, chest: 45, collar: 12, phone: "09174163042" },
-      { id: 8, name: "Mohammad nowresideh", height: 12, shoulder: 12, sleeve: 13, sleeveRing: 12, armpit: 54, chest: 45, collar: 12, phone: "09174163042" },
-      { id: 9, name: "Mohammad nowresideh", height: 12, shoulder: 12, sleeve: 13, sleeveRing: 12, armpit: 54, chest: 45, collar: 12, phone: "09174163042" },
-      { id: 10, name: "Mohammad nowresideh", height: 12, shoulder: 12, sleeve: 13, sleeveRing: 12, armpit: 54, chest: 45, collar: 12, phone: "09174163042" }
-    ];
-
-    const id = context.query.id as string;
-
-    const shirt = list.find(shirt => shirt.id === +id);
+    const shirt = await this.getDetails<DetailsObj["shirt"]>(context, Server.SHIRT_DETAILS);
 
     store.dispatch(setShirtDetails(shirt));
   }
 
   async userPantsDetails({ store, context }: T) {
-    const list = [
-      { id: 1, name: "Mohammad nowresideh", height: 12, waist: 12, seat: 13, thight: 12, knee: 54, pantSlipper: 45, hip: 12, phone: "09174163042" },
-      { id: 2, name: "Mohammad nowresideh", height: 12, waist: 12, seat: 13, thight: 12, knee: 54, pantSlipper: 45, hip: 12, phone: "09174163042" },
-      { id: 3, name: "Mohammad nowresideh", height: 12, waist: 12, seat: 13, thight: 12, knee: 54, pantSlipper: 45, hip: 12, phone: "09174163042" },
-      { id: 4, name: "Mohammad nowresideh", height: 12, waist: 12, seat: 13, thight: 12, knee: 54, pantSlipper: 45, hip: 12, phone: "09174163042" },
-      { id: 5, name: "Mohammad nowresideh", height: 12, waist: 12, seat: 13, thight: 12, knee: 54, pantSlipper: 45, hip: 12, phone: "09174163042" },
-      { id: 6, name: "Mohammad nowresideh", height: 12, waist: 12, seat: 13, thight: 12, knee: 54, pantSlipper: 45, hip: 12, phone: "09174163042" },
-      { id: 7, name: "Mohammad nowresideh", height: 12, waist: 12, seat: 13, thight: 12, knee: 54, pantSlipper: 45, hip: 12, phone: "09174163042" },
-      { id: 8, name: "Mohammad nowresideh", height: 12, waist: 12, seat: 13, thight: 12, knee: 54, pantSlipper: 45, hip: 12, phone: "09174163042" },
-      { id: 9, name: "Mohammad nowresideh", height: 12, waist: 12, seat: 13, thight: 12, knee: 54, pantSlipper: 45, hip: 12, phone: "09174163042" },
-      { id: 10, name: "Mohammad nowresideh", height: 12, waist: 12, seat: 13, thight: 12, knee: 54, pantSlipper: 45, hip: 12, phone: "09174163042" }
-    ];
-
-    const id = context.query.id as string;
-
-    const pant = list.find(pant => pant.id === +id);
+    const pant = await this.getDetails<DetailsObj["pants"]>(context, Server.PANTS_DETAILS);
 
     store.dispatch(setPantsDetails(pant));
   }
 
-  async getPantsList({ store }: T) {
-    const pants: ListObj = {
-      list: {
-        [1]: [
-          { id: 1, name: "Mohammad nowresideh" },
-          { id: 2, name: "Mohammad nowresideh" },
-          { id: 3, name: "Mohammad nowresideh" },
-          { id: 4, name: "Mohammad nowresideh" },
-          { id: 5, name: "Mohammad nowresideh" },
-          { id: 6, name: "Mohammad nowresideh" },
-          { id: 7, name: "Mohammad nowresideh" },
-          { id: 8, name: "Mohammad nowresideh" },
-          { id: 9, name: "Mohammad nowresideh" },
-          { id: 10, name: "Mohammad nowresideh" }
-        ]
-      },
+  async getPantsList({ store, context }: T) {
+    const pantsList = await this.getList<PantsListObj[]>(context, List.PANTS);
 
-      max: 3,
-      current: 1
-    };
-
-    store.dispatch(setLists({ [List.PANTS]: pants }));
+    store.dispatch(setLists({ [List.PANTS]: pantsList }));
   }
 
-  async getShirtList({ store }: T) {
-    const shirt: ListObj = {
-      list: {
-        [1]: [
-          { id: 1, name: "Mohammad nowresideh" },
-          { id: 2, name: "Mohammad nowresideh" },
-          { id: 3, name: "Mohammad nowresideh" },
-          { id: 4, name: "Mohammad nowresideh" },
-          { id: 5, name: "Mohammad nowresideh" },
-          { id: 6, name: "Mohammad nowresideh" },
-          { id: 7, name: "Mohammad nowresideh" },
-          { id: 8, name: "Mohammad nowresideh" },
-          { id: 9, name: "Mohammad nowresideh" },
-          { id: 10, name: "Mohammad nowresideh" }
-        ]
-      },
+  async getShirtList({ store, context }: T) {
+    const shirtList = await this.getList<ShirtListObj[]>(context, List.SHIRT);
 
-      max: 3,
-      current: 1
-    };
-
-    store.dispatch(setLists({ [List.SHIRT]: shirt }));
+    store.dispatch(setLists({ [List.SHIRT]: shirtList }));
   }
 }

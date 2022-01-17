@@ -1,2 +1,3 @@
-export * from "./graphql";
-export * from "./rest";
+export * from "./rest-apis/servers";
+export * from "./rest-apis/forms";
+export * from "./rest-apis/lists";

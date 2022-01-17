@@ -50,7 +50,7 @@ const Inputs: FC = () => {
             <Inpt
               value={shirtForm[Input.HEIGHT].value}
               type="number"
-              onChange={event => changeInput({ form: Form.EDIT_SHIRT, input: Input.HEIGHT, value: event.target.value })}
+              onChange={event => changeInput({ form: Form.EDIT_SHIRT, input: Input.HEIGHT, value: parseInt(event.target.value) })}
               fullWidth
             />
 
@@ -65,7 +65,7 @@ const Inputs: FC = () => {
             <Inpt
               value={shirtForm[Input.SHOULDER].value}
               type="number"
-              onChange={event => changeInput({ form: Form.EDIT_SHIRT, input: Input.SHOULDER, value: event.target.value })}
+              onChange={event => changeInput({ form: Form.EDIT_SHIRT, input: Input.SHOULDER, value: parseInt(event.target.value) })}
               fullWidth
             />
 
@@ -80,7 +80,7 @@ const Inputs: FC = () => {
             <Inpt
               value={shirtForm[Input.SLEEVE].value}
               type="number"
-              onChange={event => changeInput({ form: Form.EDIT_SHIRT, input: Input.SLEEVE, value: event.target.value })}
+              onChange={event => changeInput({ form: Form.EDIT_SHIRT, input: Input.SLEEVE, value: parseInt(event.target.value) })}
               fullWidth
             />
 
@@ -95,7 +95,7 @@ const Inputs: FC = () => {
             <Inpt
               value={shirtForm[Input.SLEEVE_RING].value}
               type="number"
-              onChange={event => changeInput({ form: Form.EDIT_SHIRT, input: Input.SLEEVE_RING, value: event.target.value })}
+              onChange={event => changeInput({ form: Form.EDIT_SHIRT, input: Input.SLEEVE_RING, value: parseInt(event.target.value) })}
               fullWidth
             />
 
@@ -110,7 +110,7 @@ const Inputs: FC = () => {
             <Inpt
               value={shirtForm[Input.ARMPIT].value}
               type="number"
-              onChange={event => changeInput({ form: Form.EDIT_SHIRT, input: Input.ARMPIT, value: event.target.value })}
+              onChange={event => changeInput({ form: Form.EDIT_SHIRT, input: Input.ARMPIT, value: parseInt(event.target.value) })}
               fullWidth
             />
 
@@ -125,7 +125,7 @@ const Inputs: FC = () => {
             <Inpt
               value={shirtForm[Input.CHEST].value}
               type="number"
-              onChange={event => changeInput({ form: Form.EDIT_SHIRT, input: Input.CHEST, value: event.target.value })}
+              onChange={event => changeInput({ form: Form.EDIT_SHIRT, input: Input.CHEST, value: parseInt(event.target.value) })}
               fullWidth
             />
 
@@ -140,7 +140,7 @@ const Inputs: FC = () => {
             <Inpt
               value={shirtForm[Input.COLLAR].value}
               type="number"
-              onChange={event => changeInput({ form: Form.EDIT_SHIRT, input: Input.COLLAR, value: event.target.value })}
+              onChange={event => changeInput({ form: Form.EDIT_SHIRT, input: Input.COLLAR, value: parseInt(event.target.value) })}
               fullWidth
             />
 
@@ -155,7 +155,7 @@ const Inputs: FC = () => {
             <Inpt
               value={shirtForm[Input.PHONE].value}
               type="text"
-              onChange={event => changeInput({ form: Form.CREATE_NEW_SHIRT, input: Input.PHONE, value: event.target.value })}
+              onChange={event => changeInput({ form: Form.EDIT_SHIRT, input: Input.PHONE, value: event.target.value })}
               fullWidth
             />
 

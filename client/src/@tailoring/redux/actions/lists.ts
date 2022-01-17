@@ -1,8 +1,10 @@
 import { Dispatch } from "react";
 import { clientError, loading, success } from ".";
 import { RootState } from "..";
-import { Action, AppActions, ChangePageObj, ChnagePage, ListType, Loadings, SetLists } from "../../types";
-import { asyncTry } from "../../utility";
+import { listsApis } from "../../apis";
+import { Rest } from "../../services";
+import { Action, AppActions, ChangePageObj, ChnagePage, ListRes, ListType, Loadings, SetLists } from "../../types";
+import { asyncTry, getAccessToken } from "../../utility";
 
 export function setLists(list: ListType): SetLists {
   return {
@@ -26,23 +28,10 @@ function changeCurrentPage({ page, list, type }: ChangePageObj): ChnagePage {
   };
 }
 
-async function getNewPage(page: number, type: string) {
-  return new Promise<any[]>(function (resolve) {
-    setTimeout(function () {
-      resolve([
-        { id: 11, name: "saman nowresideh" },
-        { id: 12, name: "saman nowresideh" },
-        { id: 13, name: "saman nowresideh" },
-        { id: 14, name: "saman nowresideh" },
-        { id: 15, name: "saman nowresideh" },
-        { id: 16, name: "saman nowresideh" },
-        { id: 17, name: "saman nowresideh" },
-        { id: 18, name: "saman nowresideh" },
-        { id: 19, name: "saman nowresideh" },
-        { id: 20, name: "saman nowresideh" }
-      ]);
-    }, 2000);
-  });
+async function getNewPage(page: number, pageType: string) {
+  const accessToken = await getAccessToken();
+
+  return new Rest().req<ListRes>(listsApis[pageType]({ accessToken, page }));
 }
 
 export function changePage(page: number, type: string) {
@@ -66,13 +55,13 @@ export function changePage(page: number, type: string) {
 
     dispatch(loading(Loadings.PAGINATION));
 
-    const { data, error } = await asyncTry<any[]>(getNewPage)(page, type);
+    const { data, error } = await asyncTry<ListRes>(getNewPage)(page, type);
 
     if (error) {
       return dispatch(clientError(error));
     }
 
     dispatch(success(Loadings.PAGINATION));
-    dispatch(changeCurrentPage({ page, list: data as any[], type }));
+    dispatch(changeCurrentPage({ page, list: data!.list, type }));
   };
 }

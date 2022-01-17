@@ -1,8 +1,15 @@
 import { Dispatch } from "redux";
 import { loading, success, clientError } from ".";
 import { RootState } from "..";
-import { Action, AppActions, ChangeInput, ChangeInputObj, GlobalObj, InputObj, Loadings, SetForms } from "../../types";
-import { asyncTry } from "../../utility";
+import { formApis } from "../../apis";
+import { Rest } from "../../services";
+import { Action, AppActions, ChangeInput, ChangeInputObj, Form, GlobalObj, InputObj, Loadings, Page, SetForms } from "../../types";
+import { asyncTry, getAccessToken } from "../../utility";
+import { signIn } from "next-auth/react";
+import { ClientError } from "../../models";
+import Router from "next/router";
+import toast from "react-hot-toast";
+import { showMessage } from "../../utility";
 
 export function changeInput({ form, input, value }: ChangeInputObj): ChangeInput {
   return {
@@ -36,17 +43,50 @@ function formOptimization(form: GlobalObj<InputObj>) {
   return optimizedForm;
 }
 
-async function sendInformation(forms: GlobalObj<InputObj>) {
-  const optimizedForm = formOptimization(forms);
-
-  return new Promise<{}>(function (resolve) {
-    setTimeout(function () {
-      resolve({});
-    }, 2000);
-  });
+function signupAction() {
+  return Router.push(Page.LOGIN);
 }
 
-export function formSubmit(form: string) {
+async function loginAction(response: GlobalObj<any>) {
+  const result = await signIn<"credentials">("credentials", {
+    redirect: false,
+    accessToken: response.accessToken,
+    expire: response.expire
+  });
+
+  if (result!.error) {
+    throw new ClientError(result!.error);
+  }
+
+  return Router.replace(Page.PANTS_CREATION);
+}
+
+async function actionsAcfterFormSubmit(form: number, response: GlobalObj<any>) {
+  switch (form) {
+    case Form.SIGNUP:
+      return signupAction();
+
+    case Form.LOGIN:
+      return loginAction(response);
+
+    default:
+      return null;
+  }
+}
+
+async function sendInformation(form: number, formInfo: GlobalObj<InputObj>) {
+  const optimizedForm = formOptimization(formInfo);
+
+  const accessToken = await getAccessToken();
+
+  const response = await new Rest().req<GlobalObj<any>>(formApis[form](optimizedForm, accessToken));
+
+  actionsAcfterFormSubmit(form, response);
+
+  return response;
+}
+
+export function formSubmit(form: number) {
   return async function (dispatch: Dispatch<AppActions>, getState: () => RootState) {
     const state = getState();
 
@@ -56,14 +96,14 @@ export function formSubmit(form: string) {
 
     dispatch(loading(Loadings.FORM_SUBMITION));
 
-    const { data, error } = await asyncTry<{}>(sendInformation)(state.formsReducer.forms[form]);
+    const { data, error } = await asyncTry<GlobalObj<any>>(sendInformation)(form, state.formsReducer.forms[form]);
 
     if (error) {
       return dispatch(clientError(error));
     }
 
-    dispatch(success(Loadings.FORM_SUBMITION));
+    toast.success(showMessage(form));
 
-    console.log(data);
+    dispatch(success(Loadings.FORM_SUBMITION));
   };
 }

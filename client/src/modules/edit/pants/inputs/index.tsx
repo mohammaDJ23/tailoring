@@ -50,7 +50,7 @@ const Inputs: FC = () => {
             <Inpt
               value={pantsForm[Input.HEIGHT].value}
               type="number"
-              onChange={event => changeInput({ form: Form.EDIT_PANTS, input: Input.HEIGHT, value: event.target.value })}
+              onChange={event => changeInput({ form: Form.EDIT_PANTS, input: Input.HEIGHT, value: parseInt(event.target.value) })}
               fullWidth
             />
 
@@ -65,7 +65,7 @@ const Inputs: FC = () => {
             <Inpt
               value={pantsForm[Input.WAIST].value}
               type="number"
-              onChange={event => changeInput({ form: Form.EDIT_PANTS, input: Input.WAIST, value: event.target.value })}
+              onChange={event => changeInput({ form: Form.EDIT_PANTS, input: Input.WAIST, value: parseInt(event.target.value) })}
               fullWidth
             />
 
@@ -80,7 +80,7 @@ const Inputs: FC = () => {
             <Inpt
               value={pantsForm[Input.SEAT].value}
               type="number"
-              onChange={event => changeInput({ form: Form.EDIT_PANTS, input: Input.SEAT, value: event.target.value })}
+              onChange={event => changeInput({ form: Form.EDIT_PANTS, input: Input.SEAT, value: parseInt(event.target.value) })}
               fullWidth
             />
 
@@ -95,7 +95,7 @@ const Inputs: FC = () => {
             <Inpt
               value={pantsForm[Input.THIGHT].value}
               type="number"
-              onChange={event => changeInput({ form: Form.EDIT_PANTS, input: Input.THIGHT, value: event.target.value })}
+              onChange={event => changeInput({ form: Form.EDIT_PANTS, input: Input.THIGHT, value: parseInt(event.target.value) })}
               fullWidth
             />
 
@@ -110,7 +110,7 @@ const Inputs: FC = () => {
             <Inpt
               value={pantsForm[Input.KNEE].value}
               type="number"
-              onChange={event => changeInput({ form: Form.EDIT_PANTS, input: Input.KNEE, value: event.target.value })}
+              onChange={event => changeInput({ form: Form.EDIT_PANTS, input: Input.KNEE, value: parseInt(event.target.value) })}
               fullWidth
             />
 
@@ -125,7 +125,7 @@ const Inputs: FC = () => {
             <Inpt
               value={pantsForm[Input.PANT_SLIPPER].value}
               type="number"
-              onChange={event => changeInput({ form: Form.EDIT_PANTS, input: Input.PANT_SLIPPER, value: event.target.value })}
+              onChange={event => changeInput({ form: Form.EDIT_PANTS, input: Input.PANT_SLIPPER, value: parseInt(event.target.value) })}
               fullWidth
             />
 
@@ -140,7 +140,7 @@ const Inputs: FC = () => {
             <Inpt
               value={pantsForm[Input.HIP].value}
               type="number"
-              onChange={event => changeInput({ form: Form.EDIT_PANTS, input: Input.HIP, value: event.target.value })}
+              onChange={event => changeInput({ form: Form.EDIT_PANTS, input: Input.HIP, value: parseInt(event.target.value) })}
               fullWidth
             />
 
@@ -155,7 +155,7 @@ const Inputs: FC = () => {
             <Inpt
               value={pantsForm[Input.PHONE].value}
               type="text"
-              onChange={event => changeInput({ form: Form.CREATE_NEW_PANTS, input: Input.PHONE, value: event.target.value })}
+              onChange={event => changeInput({ form: Form.EDIT_PANTS, input: Input.PHONE, value: event.target.value })}
               fullWidth
             />
 

@@ -31,8 +31,8 @@ export interface EnablingElementObj {
 
 /**@type { lists } */
 
-export interface ListObj {
-  list: { [key: number]: any[] };
+export interface ListObj<T extends any[] = any[]> {
+  list: { [key: number]: T };
   max: number;
   current: number;
 }
