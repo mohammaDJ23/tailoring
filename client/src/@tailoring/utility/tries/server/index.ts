@@ -12,7 +12,9 @@ class Server {
       options.store.dispatch(serverError(err.message));
 
       switch (err.code) {
+        case Code.UNAUTHORIZED:
         case Code.TEMP_REDIRECT:
+        case Code.EXPIRATION:
           return {
             redirect: {
               permanent: false,

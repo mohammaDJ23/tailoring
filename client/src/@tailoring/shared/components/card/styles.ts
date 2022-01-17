@@ -6,7 +6,7 @@ export const content = styled.div`
     padding: 20px;
 
     @media screen and (max-width: 400px) {
-      padding: 5px;
+      padding: 12px;
     }
   }
 `;

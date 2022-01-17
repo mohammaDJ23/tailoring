@@ -4,7 +4,7 @@ import { AppActions } from ".";
 import { RootState } from "../redux";
 
 export interface GlobalObj<T extends unknown = unknown> {
-  [key: string]: T;
+  [key: string | number]: T;
 }
 
 export interface InputObj<T extends unknown = unknown> {

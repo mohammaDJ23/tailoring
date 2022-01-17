@@ -39,9 +39,9 @@ export type RequestProcessActions = Loading | ClientError | ServerError | Succes
 /**@type { form } */
 
 export interface ChangeInputObj {
-  form: string;
+  form: number;
   input: string;
-  value: string;
+  value: any;
 }
 
 export interface ChangeInput {

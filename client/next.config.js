@@ -4,5 +4,9 @@ module.exports = {
 
   experimental: {
     styledComponents: true
+  },
+
+  env: {
+    REST_API_URL: "http://localhost:5000"
   }
 };

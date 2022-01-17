@@ -7,3 +7,5 @@ export * from "./paths";
 export * from "./convert-html-to-string";
 export * from "./convert-string-to-html";
 export * from "./debounce";
+export * from "./get-access-token";
+export * from "./show-message";
