@@ -5,5 +5,5 @@ export class LoginReturnObj {
   accessToken: String;
 
   @ApiProperty()
-  expire: string;
+  expire: Date;
 }

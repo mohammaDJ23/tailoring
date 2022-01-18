@@ -5,7 +5,7 @@ import {
 } from '@nestjs/common';
 
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Like, Repository } from 'typeorm';
 import { CreatePantsDto } from './dtos/create-pants.dto';
 import { EditPantsDto } from './dtos/edit-pants.dto';
 import { Pants } from './pants.entity';
@@ -51,15 +51,34 @@ export class PantsService {
     return this.repository.save(pants);
   }
 
+  getMax(list: Pants[], total: number) {
+    return !list.length ? 0 : Math.ceil(total / ITEMS_PER_PAGE);
+  }
+
   async list(page: number) {
     const [list, total] = await this.repository.findAndCount({
       take: ITEMS_PER_PAGE,
       skip: ITEMS_PER_PAGE * (page - 1),
+      order: { createdAt: 'DESC' },
     });
 
     return {
       list,
-      max: !list.length ? 0 : Math.ceil(total / ITEMS_PER_PAGE),
+      max: this.getMax(list, total),
+    };
+  }
+
+  async search(query: string, page: number = 1) {
+    const [list, total] = await this.repository.findAndCount({
+      take: ITEMS_PER_PAGE,
+      skip: ITEMS_PER_PAGE * (page - 1),
+      where: { name: Like(`%${query}%`) },
+      order: { createdAt: 'DESC' },
+    });
+
+    return {
+      list,
+      max: this.getMax(list, total),
     };
   }
 }

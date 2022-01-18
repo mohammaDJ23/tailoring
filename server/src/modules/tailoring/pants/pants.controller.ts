@@ -25,6 +25,7 @@ import {
   ApiResponse,
 } from '@nestjs/swagger';
 import { Pants } from './pants.entity';
+import { QueryDto } from '../dtos/query.dto';
 
 @Controller('pants')
 @UseGuards(JwtAuthGuard)
@@ -69,5 +70,15 @@ export class PantsController {
   @ApiResponse({ type: Pants })
   details(@Query(ValidationPipe) query: IdDto) {
     return this.pantsService.findOne(parseInt(query.id));
+  }
+
+  @Get('/search')
+  @Serialize(PantsListDto)
+  @ApiBearerAuth()
+  @ApiTags('search')
+  @ApiQuery({ name: 'query' })
+  @ApiResponse({ type: PantsListDto })
+  query(@Query(ValidationPipe) query: QueryDto) {
+    return this.pantsService.search(query.query);
   }
 }
