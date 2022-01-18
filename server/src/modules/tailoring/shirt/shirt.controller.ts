@@ -25,6 +25,7 @@ import {
   ApiResponse,
 } from '@nestjs/swagger';
 import { Shirt } from './shirt.entity';
+import { QueryDto } from '../dtos/query.dto';
 
 @Controller('shirt')
 @UseGuards(JwtAuthGuard)
@@ -69,5 +70,15 @@ export class ShirtController {
   @ApiResponse({ type: Shirt })
   details(@Query(ValidationPipe) query: IdDto) {
     return this.shirtService.findOne(parseInt(query.id));
+  }
+
+  @Get('/search')
+  @Serialize(ShirtListDto)
+  @ApiBearerAuth()
+  @ApiTags('search')
+  @ApiQuery({ name: 'query' })
+  @ApiResponse({ type: ShirtListDto })
+  query(@Query(ValidationPipe) query: QueryDto) {
+    return this.shirtService.search(query.query);
   }
 }

@@ -1,4 +1,5 @@
 import {
+  IsNotEmpty,
   IsNumber,
   IsNumberString,
   IsPositive,
@@ -10,6 +11,7 @@ import { ApiProperty } from '@nestjs/swagger';
 export class CreatePantsDto {
   @ApiProperty()
   @IsString()
+  @IsNotEmpty()
   name: string;
 
   @ApiProperty()

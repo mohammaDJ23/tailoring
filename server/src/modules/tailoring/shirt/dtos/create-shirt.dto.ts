@@ -3,6 +3,7 @@ import {
   IsNumber,
   IsPositive,
   IsNumberString,
+  IsNotEmpty,
 } from 'class-validator';
 
 import { ApiProperty } from '@nestjs/swagger';
@@ -10,6 +11,7 @@ import { ApiProperty } from '@nestjs/swagger';
 export class CreateShirtDto {
   @ApiProperty()
   @IsString()
+  @IsNotEmpty()
   name: string;
 
   @ApiProperty()

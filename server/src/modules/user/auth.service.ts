@@ -51,7 +51,10 @@ export class AuthService {
 
     return {
       accessToken,
-      expire: this.configService.get<string>('JWT_EXPIRATION'),
+      expire: new Date(
+        new Date().getTime() +
+          parseInt(this.configService.get<string>('JWT_EXPIRATION')),
+      ),
     };
   }
 }

@@ -30,4 +30,10 @@ export class PantsDto {
 
   @Expose()
   phone: string;
+
+  @Expose()
+  createdAt: Date;
+
+  @Expose()
+  updatedAt: Date;
 }

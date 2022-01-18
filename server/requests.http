@@ -59,7 +59,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhd
 ### list of pants
 
 GET http://localhost:5000/pants/list?page=1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY0MjIyMDQ1NywiZXhwIjoxNjQyMjI0MDU3fQ.Xo0Lf4YzN2gCQmdgE3hKU1iEPV2NHD266SEnzX0VLic
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY0MjI3Nzk3NSwiZXhwIjoxNjQyMjc4MDM1fQ.Kdn3cWp19pe9tJOH9yd9bDgZPaL6lMqX3igRnmUKOAw
 
 ### get details
 
@@ -105,11 +105,21 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhd
 
 ### list of shirt
 
-GET http://localhost:5000/shirt/list?page=2
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY0MjIyMDQ1NywiZXhwIjoxNjQyMjI0MDU3fQ.Xo0Lf4YzN2gCQmdgE3hKU1iEPV2NHD266SEnzX0VLic
+GET http://localhost:5000/shirt/list?page=1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY0MjI3Nzk3NSwiZXhwIjoxNjQyMjc4MDM1fQ.Kdn3cWp19pe9tJOH9yd9bDgZPaL6lMqX3igRnmUKOAw
 
 ### get details
 
 GET http://localhost:5000/shirt/details?id=2
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY0MjIzMjE3OSwiZXhwIjoxNjQyMjMyMjM5fQ.uC-MPMZ170dkXerjwXWmKY4qOret2fM_rNYIcE6V1os
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY0MjUwMTU4MSwiZXhwIjoxNjQyNTAxODgxfQ.J1_3jjJh3KbEZ6-Lk6bPowGm_P5HEeXfa_PtQgao--k
+
+### search a pant
+
+GET http://localhost:5000/pants/search?query=a
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY0MjUwNjUwOSwiZXhwIjoxNjQyNTA2ODA5fQ.BzPa6IdJrVLWKRuzcU5b2oNujvp_quZCkql1zsmuvHY
+
+### search a shirt
+
+GET http://localhost:5000/shirt/search?query=a
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY0MjUwNzc3MCwiZXhwIjoxNjQyNTA4MDcwfQ.L4v45qw-BF-W10NdMdmWfQ45B77tvJxem4ostxCaYlc
 

@@ -1,10 +1,10 @@
 import { Expose, Type } from 'class-transformer';
-import { Shirt } from '../shirt.entity';
+import { ShirtDto } from './shirt.dto';
 
 export class ShirtListDto {
   @Expose()
-  @Type(() => Shirt)
-  list: Shirt[];
+  @Type(() => ShirtDto)
+  list: ShirtDto[];
 
   @Expose()
   max: number;
