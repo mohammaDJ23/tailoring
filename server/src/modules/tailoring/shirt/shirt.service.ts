@@ -54,11 +54,12 @@ export class ShirtService {
     return !list.length ? 0 : Math.ceil(total / ITEMS_PER_PAGE);
   }
 
-  async list(page: number) {
+  async list(page: number, query: string) {
     const [list, total] = await this.repository.findAndCount({
       take: ITEMS_PER_PAGE,
       skip: ITEMS_PER_PAGE * (page - 1),
       order: { createdAt: 'DESC' },
+      where: query ? { name: Like(`%${query}%`) } : {},
     });
 
     return {

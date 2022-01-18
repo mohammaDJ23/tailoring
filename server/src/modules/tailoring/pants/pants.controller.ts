@@ -6,6 +6,7 @@ import {
   Post,
   Query,
   UseGuards,
+  UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
 import { JwtAuthGuard } from 'src/guards/jwt-auth.guard';
@@ -57,9 +58,10 @@ export class PantsController {
   @ApiBearerAuth()
   @ApiTags('pants')
   @ApiQuery({ name: 'page' })
+  @ApiQuery({ name: 'query' })
   @ApiResponse({ type: PantsListDto })
   list(@Query(ValidationPipe) query: PageDto) {
-    return this.pantsService.list(query.page);
+    return this.pantsService.list(query.page, query.query);
   }
 
   @Get('/details')

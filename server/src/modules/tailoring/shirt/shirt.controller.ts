@@ -57,9 +57,10 @@ export class ShirtController {
   @ApiBearerAuth()
   @ApiTags('shirt')
   @ApiQuery({ name: 'page' })
+  @ApiQuery({ name: 'query' })
   @ApiResponse({ type: ShirtListDto })
   list(@Query(ValidationPipe) query: PageDto) {
-    return this.shirtService.list(query.page);
+    return this.shirtService.list(query.page, query.query);
   }
 
   @Get('/details')
