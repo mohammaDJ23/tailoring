@@ -1,9 +1,9 @@
 import { GlobalObj, List, ReqInputObj } from "../../types";
 
-export const listsApis: GlobalObj<(data: GlobalObj<any>) => ReqInputObj> = {
+export const queriesApis: GlobalObj<(data: GlobalObj<any>) => ReqInputObj<any>> = {
   [List.PANTS](data) {
     return {
-      url: `/pants/list?page=${data.page}&query=${data.query || ""}`,
+      url: `/pants/search?query=${data.query}`,
       method: "GET",
       headers: {
         Authorization: `Bearer ${data.accessToken}`
@@ -13,7 +13,7 @@ export const listsApis: GlobalObj<(data: GlobalObj<any>) => ReqInputObj> = {
 
   [List.SHIRT](data) {
     return {
-      url: `/shirt/list?page=${data.page}&query=${data.query || ""}`,
+      url: `/shirt/search?query=${data.query}`,
       method: "GET",
       headers: {
         Authorization: `Bearer ${data.accessToken}`

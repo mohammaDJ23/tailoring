@@ -73,6 +73,11 @@ export type EnablingElementActions = EnablingElement;
 
 /**@type { lists } */
 
+export interface ChangePageOptions {
+  type: string;
+  query?: string;
+}
+
 export interface SetLists {
   type: Action.SET_LISTS;
 
@@ -111,6 +116,11 @@ export interface UpdateList {
 export type ListsActions = SetLists | ChnagePage | UpdateList;
 
 /**@type { search query } */
+
+export interface QueryResObj<T extends any = any> {
+  list: T[];
+  max: number;
+}
 
 export interface SearchQuery {
   type: Action.SEARCH_QUERY;

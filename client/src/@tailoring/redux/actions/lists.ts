@@ -3,7 +3,7 @@ import { clientError, loading, success } from ".";
 import { RootState } from "..";
 import { listsApis } from "../../apis";
 import { Rest } from "../../services";
-import { Action, AppActions, ChangePageObj, ChnagePage, ListRes, ListType, Loadings, SetLists } from "../../types";
+import { Action, AppActions, ChangePageObj, ChnagePage, ListRes, ListType, Loadings, SetLists, ChangePageOptions } from "../../types";
 import { asyncTry, getAccessToken } from "../../utility";
 
 export function setLists(list: ListType): SetLists {
@@ -28,13 +28,13 @@ function changeCurrentPage({ page, list, type }: ChangePageObj): ChnagePage {
   };
 }
 
-async function getNewPage(page: number, pageType: string) {
+async function getNewPage(page: number, { type, query }: ChangePageOptions) {
   const accessToken = await getAccessToken();
 
-  return new Rest().req<ListRes>(listsApis[pageType]({ accessToken, page }));
+  return new Rest().req<ListRes>(listsApis[type]({ accessToken, page, query }));
 }
 
-export function changePage(page: number, type: string) {
+export function changePage(page: number, { type, query }: ChangePageOptions) {
   return async function (dispatch: Dispatch<AppActions>, getState: () => RootState) {
     const state = getState();
     const theList = state.listsReducer.lists[type];
@@ -55,7 +55,7 @@ export function changePage(page: number, type: string) {
 
     dispatch(loading(Loadings.PAGINATION));
 
-    const { data, error } = await asyncTry<ListRes>(getNewPage)(page, type);
+    const { data, error } = await asyncTry<ListRes>(getNewPage)(page, { type, query });
 
     if (error) {
       return dispatch(clientError(error));

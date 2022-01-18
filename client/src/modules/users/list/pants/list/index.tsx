@@ -42,7 +42,13 @@ const List: FC = () => {
       <C.contnet className="pb-3">
         <C.contnet className="d-flex align-items-center justify-content-center">
           <Stack spacing={2}>
-            <Pagination onChange={(_, page) => changePage(page, Lists.PANTS)} count={maxPage} page={currentPage} size="small" color="primary" />
+            <Pagination
+              onChange={(_, page) => changePage(page, { type: Lists.PANTS, query: searchQueryReducer.query })}
+              count={maxPage}
+              page={currentPage}
+              size="small"
+              color="primary"
+            />
           </Stack>
         </C.contnet>
       </C.contnet>
