@@ -28,30 +28,38 @@ const List: FC = () => {
       </C.contnet>
 
       <C.contnet>
-        <Lst>
-          {list.map((pant, index) => (
-            <React.Fragment key={index}>
-              <Items {...pant} />
+        {list.length >= 1 ? (
+          <Lst>
+            {list.map((pant, index) => (
+              <React.Fragment key={index}>
+                <Items {...pant} />
 
-              {index !== list.length - 1 && <Divider />}
-            </React.Fragment>
-          ))}
-        </Lst>
+                {index !== list.length - 1 && <Divider />}
+              </React.Fragment>
+            ))}
+          </Lst>
+        ) : (
+          <C.contnet className="text-center">
+            <C.text className="fs-12">Empty list</C.text>
+          </C.contnet>
+        )}
       </C.contnet>
 
-      <C.contnet className="pb-3">
-        <C.contnet className="d-flex align-items-center justify-content-center">
-          <Stack spacing={2}>
-            <Pagination
-              onChange={(_, page) => changePage(page, { type: Lists.PANTS, query: searchQueryReducer.query })}
-              count={maxPage}
-              page={currentPage}
-              size="small"
-              color="primary"
-            />
-          </Stack>
+      {list.length >= 1 && (
+        <C.contnet className="pb-3">
+          <C.contnet className="d-flex align-items-center justify-content-center">
+            <Stack spacing={2}>
+              <Pagination
+                onChange={(_, page) => changePage(page, { type: Lists.PANTS, query: searchQueryReducer.query })}
+                count={maxPage}
+                page={currentPage}
+                size="small"
+                color="primary"
+              />
+            </Stack>
+          </C.contnet>
         </C.contnet>
-      </C.contnet>
+      )}
     </C.contnet>
   );
 };

@@ -5,8 +5,9 @@ import { Collapse, List, ListItem } from "@material-ui/core";
 import { KeyboardArrowRight } from "@material-ui/icons";
 import * as C from "./styles";
 import { useRedirect, useSideNavigation, useState } from "../../hooks";
-import { Element } from "../../../types";
+import { Element, Page } from "../../../types";
 import Backdrop from "../backdrop";
+import { signOut } from "next-auth/react";
 
 const SideNavigation: FC = () => {
   const { redirect } = useRedirect();
@@ -40,8 +41,7 @@ const SideNavigation: FC = () => {
                   <ListItem
                     onClick={
                       () =>
-                        item.paths &&
-                        udpateCollapsIndex(collapsIndex === -1 ? index : index === collapsIndex ? -1 : index) /* : redirect("push", item.path) */
+                        item.paths && udpateCollapsIndex(collapsIndex === -1 ? index : index === collapsIndex ? -1 : index) /* : redirect("push", item.path) */
                     }
                     button
                     className="w-100 d-flex align-items-center justify-content-between"
@@ -70,6 +70,14 @@ const SideNavigation: FC = () => {
                   )}
                 </React.Fragment>
               ))}
+            </List>
+
+            <List disablePadding>
+              <ListItem button onClick={() => signOut({ redirect: true })}>
+                <C.content>
+                  <C.text className="c-deactive">Sign out</C.text>
+                </C.content>
+              </ListItem>
             </List>
           </C.content>
         </C.content>

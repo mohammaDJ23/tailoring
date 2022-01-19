@@ -6,6 +6,7 @@ import { Col, Row } from "reactstrap";
 import { Button } from "@mui/material";
 import { useRouter } from "next/router";
 import { Page } from "../../../../../@tailoring/types";
+import moment from "moment";
 
 const UserPantsDetails: FC = () => {
   const { detailsReducer } = useState();
@@ -32,7 +33,7 @@ const UserPantsDetails: FC = () => {
                   </C.content>
 
                   <C.content className="text-overflow-hidden">
-                    <C.text className="f-bold">{pants.name}</C.text>
+                    <C.text className="fs-14">{pants.name}</C.text>
                   </C.content>
                 </C.content>
               </C.content>
@@ -54,7 +55,7 @@ const UserPantsDetails: FC = () => {
                   </C.content>
 
                   <C.content className="text-overflow-hidden">
-                    <C.text className="f-bold">{pants.phone}</C.text>
+                    <C.text className="fs-14">{pants.phone}</C.text>
                   </C.content>
                 </C.content>
               </C.content>
@@ -76,7 +77,7 @@ const UserPantsDetails: FC = () => {
                   </C.content>
 
                   <C.content className="text-overflow-hidden">
-                    <C.text className="f-bold">{pants.height}</C.text>
+                    <C.text className="fs-14">{pants.height}</C.text>
                   </C.content>
                 </C.content>
               </C.content>
@@ -98,7 +99,7 @@ const UserPantsDetails: FC = () => {
                   </C.content>
 
                   <C.content className="text-overflow-hidden">
-                    <C.text className="f-bold">{pants.waist}</C.text>
+                    <C.text className="fs-14">{pants.waist}</C.text>
                   </C.content>
                 </C.content>
               </C.content>
@@ -120,7 +121,7 @@ const UserPantsDetails: FC = () => {
                   </C.content>
 
                   <C.content className="text-overflow-hidden">
-                    <C.text className="f-bold">{pants.seat}</C.text>
+                    <C.text className="fs-14">{pants.seat}</C.text>
                   </C.content>
                 </C.content>
               </C.content>
@@ -142,7 +143,7 @@ const UserPantsDetails: FC = () => {
                   </C.content>
 
                   <C.content className="text-overflow-hidden">
-                    <C.text className="f-bold">{pants.thight}</C.text>
+                    <C.text className="fs-14">{pants.thight}</C.text>
                   </C.content>
                 </C.content>
               </C.content>
@@ -164,7 +165,7 @@ const UserPantsDetails: FC = () => {
                   </C.content>
 
                   <C.content className="text-overflow-hidden">
-                    <C.text className="f-bold">{pants.knee}</C.text>
+                    <C.text className="fs-14">{pants.knee}</C.text>
                   </C.content>
                 </C.content>
               </C.content>
@@ -186,7 +187,7 @@ const UserPantsDetails: FC = () => {
                   </C.content>
 
                   <C.content className="text-overflow-hidden">
-                    <C.text className="f-bold">{pants.pantSlipper}</C.text>
+                    <C.text className="fs-14">{pants.pantSlipper}</C.text>
                   </C.content>
                 </C.content>
               </C.content>
@@ -208,7 +209,29 @@ const UserPantsDetails: FC = () => {
                   </C.content>
 
                   <C.content className="text-overflow-hidden">
-                    <C.text className="f-bold">{pants.hip}</C.text>
+                    <C.text className="fs-14">{pants.hip}</C.text>
+                  </C.content>
+                </C.content>
+              </C.content>
+            </Card>
+          </Col>
+
+          <Col xs={12} md={6}>
+            <Card>
+              <C.content className="d-flex align-items-center justify-content-start">
+                <C.content className="mr-14">
+                  <C.content>
+                    <C.img src="/svgs/date.svg" />
+                  </C.content>
+                </C.content>
+
+                <C.content className="d-flex align-items-start flex-column justify-content-start">
+                  <C.content>
+                    <C.text className="f-bold">Date</C.text>
+                  </C.content>
+
+                  <C.content className="text-overflow-hidden">
+                    <C.text className="fs-14">{moment(pants.createdAt).format("lll")}</C.text>
                   </C.content>
                 </C.content>
               </C.content>

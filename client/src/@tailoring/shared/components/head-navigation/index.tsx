@@ -8,23 +8,27 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useAction } from "../../hooks";
 import { Element } from "../../../types";
+import { useResize } from "../../hooks/use-resize";
+import { useDebounce } from "../../hooks/use-debounce";
 
 const HeadNavigation: FC = () => {
   const { enablingElement } = useAction();
+  const { debounce } = useDebounce();
+
+  const {} = useResize(async function (window) {
+    if (window.innerWidth >= 1200) {
+      await debounce(500);
+
+      enablingElement("");
+    }
+  });
 
   return (
     <C.content className="w-100 head-container position-fixed">
       <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static">
           <Toolbar>
-            <IconButton
-              onClick={() => enablingElement(Element.NAVIGATION)}
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              sx={{ mr: 2 }}
-            >
+            <IconButton onClick={() => enablingElement(Element.NAVIGATION)} size="large" edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
               <MenuIcon />
             </IconButton>
 

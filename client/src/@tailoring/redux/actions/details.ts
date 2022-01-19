@@ -1,6 +1,6 @@
-import { Action, DetailsObj, SetPantsDetials, SetShirtDetials } from "../../types";
+import { Action, PantsObj, SetPantsDetials, SetShirtDetials, ShirtObj } from "../../types";
 
-export function setPantsDetails(details: DetailsObj["pants"]): SetPantsDetials {
+export function setPantsDetails(details: PantsObj): SetPantsDetials {
   return {
     type: Action.SET_PANTS_DETAILS,
 
@@ -10,7 +10,7 @@ export function setPantsDetails(details: DetailsObj["pants"]): SetPantsDetials {
   };
 }
 
-export function setShirtDetails(details: DetailsObj["shirt"]): SetShirtDetials {
+export function setShirtDetails(details: ShirtObj): SetShirtDetials {
   return {
     type: Action.SET_SHIRT_DETAILS,
 
