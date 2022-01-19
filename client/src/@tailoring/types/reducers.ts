@@ -51,7 +51,7 @@ export interface SearchQueryObj {
 
 /**@type { details } */
 
-interface PantsObj {
+export interface PantsObj {
   [Input.ID]: number;
   [Input.NAME]: string;
   [Input.PHONE]: string;
@@ -62,9 +62,11 @@ interface PantsObj {
   [Input.KNEE]: number;
   [Input.PANT_SLIPPER]: number;
   [Input.HIP]: number;
+  [Input.CREATED_AT]: Date;
+  [Input.UPDATED_AT]: Date;
 }
 
-interface ShirtObj {
+export interface ShirtObj {
   [Input.ID]: number;
   [Input.NAME]: string;
   [Input.PHONE]: string;
@@ -75,6 +77,8 @@ interface ShirtObj {
   [Input.ARMPIT]: number;
   [Input.CHEST]: number;
   [Input.COLLAR]: number;
+  [Input.CREATED_AT]: Date;
+  [Input.UPDATED_AT]: Date;
 }
 
 export interface DetailsObj {

@@ -3,7 +3,7 @@ import { loading, success, clientError } from ".";
 import { RootState } from "..";
 import { formApis } from "../../apis";
 import { Rest } from "../../services";
-import { Action, AppActions, ChangeInput, ChangeInputObj, Form, GlobalObj, InputObj, Loadings, Page, SetForms } from "../../types";
+import { Action, AppActions, ChangeInput, ChangeInputObj, Form, GlobalObj, InputObj, Loadings, Page, PantsObj, SetForms } from "../../types";
 import { asyncTry, getAccessToken } from "../../utility";
 import { signIn } from "next-auth/react";
 import { ClientError } from "../../models";
@@ -61,6 +61,22 @@ async function loginAction(response: GlobalObj<any>) {
   return Router.replace(Page.PANTS_CREATION);
 }
 
+function createNewPantsAction() {
+  return Router.push(Page.USERS_PANTS_LIST);
+}
+
+function createNewShirtAction() {
+  return Router.push(Page.USERS_SHIRT_LIST);
+}
+
+function editPantsAction(response: GlobalObj<any>) {
+  return Router.push(`${Page.USER_PANTS_DETAILS}/${response.id}`);
+}
+
+function editShirtAction(response: GlobalObj<any>) {
+  return Router.push(`${Page.USER_SHIRT_DETAILS}/${response.id}`);
+}
+
 async function actionsAcfterFormSubmit(form: number, response: GlobalObj<any>) {
   switch (form) {
     case Form.SIGNUP:
@@ -68,6 +84,18 @@ async function actionsAcfterFormSubmit(form: number, response: GlobalObj<any>) {
 
     case Form.LOGIN:
       return loginAction(response);
+
+    case Form.CREATE_NEW_PANTS:
+      return createNewPantsAction();
+
+    case Form.CREATE_NEW_SHIRT:
+      return createNewShirtAction();
+
+    case Form.EDIT_PANTS:
+      return editPantsAction(response);
+
+    case Form.EDIT_SHIRT:
+      return editShirtAction(response);
 
     default:
       return null;

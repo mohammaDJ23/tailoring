@@ -90,6 +90,10 @@ const GlobalStyle: GlobalStyleComponent<{}, DefaultTheme> = createGlobalStyle`
     font-family: var(--f-semiBoldItalic);
   }
 
+  .fs-12 {
+    font-size: 12px;
+  }
+
   .fs-14 {
     font-size: 14px;
   }

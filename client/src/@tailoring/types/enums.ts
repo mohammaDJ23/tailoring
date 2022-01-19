@@ -50,7 +50,9 @@ export enum Input {
   SLEEVE_RING = "sleeveRing",
   SEAT = "seat",
   PANT_SLIPPER = "pantSlipper",
-  ID = "id"
+  ID = "id",
+  CREATED_AT = "createdAt",
+  UPDATED_AT = "updatedAt"
 }
 
 export enum Code {

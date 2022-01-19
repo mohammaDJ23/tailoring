@@ -2,7 +2,7 @@ import { GetServerSidePropsContext } from "next";
 import { listsApis, serverApis } from "../../apis";
 import { setLists, setPantsDetails, setShirtDetails } from "../../redux/actions";
 import { Rest } from "../../services";
-import { ListRes, List, ListObj, ServerProps, ShirtListObj, PantsListObj, Server, DetailsObj } from "../../types";
+import { ListRes, List, ListObj, ServerProps, ShirtListObj, PantsListObj, Server, ShirtObj, PantsObj } from "../../types";
 import { getAccessToken } from "../../utility";
 
 export class UsersService<T extends ServerProps> {
@@ -30,13 +30,13 @@ export class UsersService<T extends ServerProps> {
   }
 
   async userShirtDetails({ store, context }: T) {
-    const shirt = await this.getDetails<DetailsObj["shirt"]>(context, Server.SHIRT_DETAILS);
+    const shirt = await this.getDetails<ShirtObj>(context, Server.SHIRT_DETAILS);
 
     store.dispatch(setShirtDetails(shirt));
   }
 
   async userPantsDetails({ store, context }: T) {
-    const pant = await this.getDetails<DetailsObj["pants"]>(context, Server.PANTS_DETAILS);
+    const pant = await this.getDetails<PantsObj>(context, Server.PANTS_DETAILS);
 
     store.dispatch(setPantsDetails(pant));
   }

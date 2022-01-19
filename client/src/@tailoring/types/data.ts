@@ -1,11 +1,9 @@
+import { PantsObj, ShirtObj } from ".";
+
 /**@type { pants list } */
 
-export interface PantsListObj {
-  id: number;
-  name: string;
-}
+export interface PantsListObj extends PantsObj {}
 
-export interface ShirtListObj {
-  id: number;
-  name: string;
-}
+/**@type { shirt list } */
+
+export interface ShirtListObj extends ShirtObj {}
