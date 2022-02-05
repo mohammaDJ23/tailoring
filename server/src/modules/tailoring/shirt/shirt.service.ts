@@ -45,6 +45,14 @@ export class ShirtService {
   async edit(body: EditShirtDto) {
     const shirt = await this.findOne(body.id);
 
+    if (body.name.toLowerCase() !== shirt.name.toLowerCase()) {
+      const [findedUserWithSameName] = await this.find(body.name);
+
+      if (findedUserWithSameName) {
+        throw new BadRequestException('tha pant in use');
+      }
+    }
+
     Object.assign(shirt, body);
 
     return this.repository.save(shirt);
@@ -58,7 +66,7 @@ export class ShirtService {
     const [list, total] = await this.repository.findAndCount({
       take: ITEMS_PER_PAGE,
       skip: ITEMS_PER_PAGE * (page - 1),
-      order: { createdAt: 'DESC' },
+      order: { updatedAt: 'DESC' },
       where: query ? { name: Like(`%${query}%`) } : {},
     });
 
@@ -73,7 +81,7 @@ export class ShirtService {
       take: ITEMS_PER_PAGE,
       skip: ITEMS_PER_PAGE * (page - 1),
       where: { name: Like(`%${query}%`) },
-      order: { createdAt: 'DESC' },
+      order: { updatedAt: 'DESC' },
     });
 
     return {

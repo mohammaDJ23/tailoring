@@ -55,5 +55,5 @@ export class Shirt {
 
   @ApiProperty()
   @UpdateDateColumn()
-  updateAt: Date;
+  updatedAt: Date;
 }
