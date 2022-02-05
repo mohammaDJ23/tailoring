@@ -6,7 +6,7 @@ import * as C from "./styles";
 import { useRedirect } from "../../../../../@tailoring/shared/hooks";
 import moment from "moment";
 
-const Items: FC<ShirtListObj> = ({ id, name, createdAt }) => {
+const Items: FC<ShirtListObj> = ({ id, name, createdAt, updatedAt }) => {
   const [element, setElement] = useState<Element | null>(null);
   const { redirect } = useRedirect();
 
@@ -21,7 +21,13 @@ const Items: FC<ShirtListObj> = ({ id, name, createdAt }) => {
               </C.content>
 
               <C.content>
-                <C.text className="fs-12">{moment(createdAt).fromNow()}</C.text>
+                <C.text className="fs-12">
+                  {(function () {
+                    const isCreatedTimeBigger = new Date(createdAt) >= new Date(updatedAt);
+
+                    return `${moment(isCreatedTimeBigger ? createdAt : updatedAt).fromNow()} ${isCreatedTimeBigger ? "was created" : "was updated"}`;
+                  })()}
+                </C.text>
               </C.content>
             </C.content>
           </C.content>
